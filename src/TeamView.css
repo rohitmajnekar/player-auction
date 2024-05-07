@@ -1,0 +1,65 @@
+/* TeamView.css */
+
+.team-view {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+  }
+  
+  .team-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .team-logo {
+    width: 70px; /* Adjust size as needed */
+    height: 70px; /* Adjust size as needed */
+    margin-right: 10px;
+  }
+  .team-points-details{
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .team-info {
+    flex-basis: 100%;
+  }
+  .team-info h2 {
+    margin: 0;
+  }
+  
+  .team-info p {
+    margin: 5px 0;
+  }
+/*   
+  .player-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+  }
+  
+  .player-item {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .player-icon {
+    width: 40px; 
+    height: 40px; 
+    margin-right: 10px;
+  }
+  
+  .player-details h3 {
+    margin: 0;
+  }
+  */
+  
+  .player-details {
+    display: flex;
+  }

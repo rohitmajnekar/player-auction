@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background-image: url("./root-bg.jpg");
+  background-size: cover;
 }
 
 .App-logo {
@@ -35,4 +37,32 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* NavBar.css */
+
+.navbar {
+  background-color: #333;
+  padding: 10px 20px;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  margin-right: 10px;
+}
+
+.title {
+  color: #fff;
+  font-size: 20px;
+}
+
+.player-card-container{
+  background-image: url("./crick-bg.png");
+  background-size: contain;
 }

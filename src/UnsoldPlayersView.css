@@ -1,0 +1,29 @@
+.unsold-players-view {
+  margin-top: 20px;
+}
+
+.player-list {
+  margin-top: 10px;
+}
+
+.player-item {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  /* padding: 10px; */
+  margin-bottom: 10px;
+  background-color: #39aeaa;
+  box-shadow: 0px 5px 2px 0px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+.player-icon {
+  width: 40px; /* Adjust icon size as needed */
+  height: 40px;
+  margin-right: 10px;
+}
+
+.player-details {
+  text-align: left;
+  flex-grow: 1; /* Expand to fill remaining space */
+}

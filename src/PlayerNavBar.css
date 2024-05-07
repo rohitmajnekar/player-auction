@@ -1,0 +1,20 @@
+.player-nav-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .player-nav-bar button {
+    border: none;
+    background-color: transparent;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 10px;
+  }
+  
+  .player-nav-bar button.active {
+    background-color: #0056b3;
+    color: #fff;
+  }
+  

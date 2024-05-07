@@ -1,0 +1,189 @@
+.player-card {
+    display: flex;
+    border: 2px solid #0056b3;
+    background-image: url("./player-card-bg.png");
+    background-size: cover;
+    color: white;
+    border-radius: 8px;
+    margin-bottom: 60px;
+    margin-top: 60px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease forwards;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add elevation effect */
+    width: 700px;
+    height: 250px;
+  }
+  .card-logo{
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(7 48 118 / 38%); */
+    margin: 10px;
+  }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateX(500px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  .player-photo {
+
+    flex: 0 0 auto;
+    overflow: hidden;
+    position:relative ;
+    top: 20px;
+  }
+  
+  .player-photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    animation: fadeIn 3s normal;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .player-info {
+    text-align: left;
+    flex: 1 1 auto;
+    padding: 10px;
+    opacity: 0;
+    animation: slideInRight 0.5s ease forwards 0.3s;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateY(200px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .player-info h2 {
+    margin-top: 0;
+  }
+  
+  .player-info p {
+    margin: 5px 0;
+  }
+  
+  .player-card {
+    position: relative; /* Positioning context for absolute positioning */
+
+  }
+  .team-overlay {
+    position: inherit; /* Fixed position to overlay entire viewport */
+    top: -20px;
+    left: 0;
+    right: 200px;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
+    display: none;
+    justify-content: flex-start;
+    align-items: center;
+    opacity: 0;
+
+  }
+
+  .team-overlay.show {
+    display: block;
+    opacity: 1;
+    transition: opacity 1s ease; /* Apply transition effect */
+
+  }
+  
+  .team-list {
+    list-style: none;
+    color: black;
+    padding: 0;
+    background-color: #fff;
+    border: 2px solid #0056b3;
+    border-radius: 8px;
+    max-width: 300px; /* Adjust width as needed */
+    overflow-y: auto; /* Enable scrolling if list is too long */
+  }
+  
+  .team-list li {
+    cursor: pointer;
+    padding: 10px;
+  }
+  
+  .team-list li:hover {
+    background-color: #f0f0f0;
+  }
+    
+  .sold-image {
+    background-image: url("https://png.pngtree.com/png-clipart/20230423/ourmid/pngtree-sold-rubber-stamp-png-image_6718966.png");
+    height: 100px;
+    background-size: contain;
+    width: 100px;
+    background-repeat: no-repeat;
+    left: 30px;
+    position: absolute;
+    top: 150px;
+  }
+
+  .sold-information {
+    position: relative;
+    left: -40px;
+  }
+  
+  /* CSS */
+  .button-8 {
+    /* right: 20px; */
+    top: 20px;
+    background-color: #fe6100;
+    border-radius: 3px;
+    border: 1px solid #7aa7c7;
+    /* box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset; */
+    box-sizing: border-box;
+    color: #ffffff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+  }
+  
+  .button-8:hover,
+  .button-8:focus {
+    background-color: #b3d3ea;
+    color: #2c5777;
+  }
+  
+  .button-8:focus {
+    box-shadow: 0 0 0 4px rgba(0, 149, 255, .15);
+  }
+  
+  .button-8:active {
+    background-color: #a0c7e4;
+    box-shadow: none;
+    color: #2c5777;
+  }
