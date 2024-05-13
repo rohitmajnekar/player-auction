@@ -2,7 +2,7 @@ import './App.css';
 import reportWebVitals from './reportWebVitals';
 import PlayerCard from './player';
 import PlayerNavBar from './PlayerNavBar';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import UnsoldPlayersView from './UnsoldPlayersView';
 import PriceModifier from './priceModifier';
 import { saveDataToLocalStorage } from './helper';
@@ -12,6 +12,7 @@ import SoldPlayersView from './SoldPlayerView';
 import TeamView from './TeamView';
 import logo from "./logo.svg"
 import io from 'socket.io-client'
+import Confetti from 'react-confetti'; // Import Confetti component
 
 const NavBar = () => {
   return (
@@ -24,27 +25,6 @@ const NavBar = () => {
   );
 };
 
-const teamsData = [
-  { name: "Team A" },
-  { name: "Team B" },
-  { name: "Team C" },
-  { name: "Team D" },
-  { name: "Team A" },
-  { name: "Team B" },
-  { name: "Team C" },
-  { name: "Team D" },
-  { name: "Team A" },
-  { name: "Team B" },
-  { name: "Team C" },
-  { name: "Team D" },
-  // Add more teams as needed
-];
-
-// const unsoldPlayerData = [
-//   {name:"Dhoni", age:50, role:"All Rounder", basePrice:"25000"},
-//   {name:"Dhoni", age:50, role:"All Rounder", basePrice:"25000"},
-//   {name:"Dhoni", age:50, role:"All Rounder", basePrice:"25000"},
-// ]
 
 function App() {
   const [all_players, set_all_players] = useState([])
@@ -70,6 +50,8 @@ function App() {
     },
     // Add more teams as needed
   ]);
+  const playerCardRef = useRef(null)
+  const [isEnterPressed, set_enter_pressed] = useState(false)
 
   
   useEffect(() => {
@@ -109,13 +91,17 @@ function App() {
       })
     };
     load()
+    if (playerCardRef.current) {
+      playerCardRef.current.focus();
+    }
+
     
   }, [])
 
-  const handleBid = (player) => {
-    const socket = io('http://localhost:8080');
-    socket.emit('bid', { player });
-};
+//   const handleBid = (player) => {
+//     const socket = io('http://localhost:8080');
+//     socket.emit('bid', { player });
+// };
   
   useEffect(()=>{
     console.log(typeof sold_players)
@@ -126,7 +112,6 @@ function App() {
       set_current_player(re_calc_unsold.at(0))
       saveDataToLocalStorage("soldPlayers", sold_players)
       saveDataToLocalStorage("teamsData",teamsData)
-      handleBid(current_player)
     }
   },[sold_players])
   
@@ -153,16 +138,32 @@ function App() {
       case 'unsold':
         return <UnsoldPlayersView players={unsold_players} set_current_player={set_current_player}/>;
       case 'teams':
-        return teamsData.map((team, index) => (
-          <TeamView key={index} team={team} />
-        ))
+        return <div>
+            {teamsData.map((team, index) => (
+              <TeamView key={index} team={team} />
+            )) }
+            {teamsData.map((team, index) => (
+              <TeamView key={index} team={team} />
+            )) }
+        </div>
       default:
         return null;
     }
   };
 
+  const handleKeyPress = (event) => {
+    // Check if the "s" key is pressed
+    console.log(event.key)
+    if (event.key === 'Enter' || event.key === 'ENTER') {
+      set_enter_pressed(!isEnterPressed) // Call handleSold function when "s" is pressed
+
+      // if (isEnterPressed){
+        
+      // }
+    }
+  };
   return (
-    <div className="App">
+    <div className="App" onKeyDown={handleKeyPress} ref={playerCardRef} tabIndex={0}>
       <NavBar/>
       <div className="player-card-container">
         <PlayerCard 
@@ -171,6 +172,7 @@ function App() {
         set_sold_player={set_sold_player}
         setTeamsData={setTeamsData}
         sale_price={price}
+        isEnterPressed={isEnterPressed}
         />
       </div>
         <PriceModifier

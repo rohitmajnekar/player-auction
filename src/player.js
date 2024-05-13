@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react';
 import './PlayerCard.css'; // Import CSS for styling
 import { saveDataToLocalStorage, getDataFromLocalStorage } from './helper';
 import PriceModifier from './priceModifier';
+import Confetti from 'react-confetti'; // Import Confetti component
 
 
-const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price }) => {
+const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed }) => {
   const [showTeams, setShowTeams] = useState(false);
 
 
@@ -36,7 +37,7 @@ const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price }
           return oldTeam;
         });
       });
-    }, 1000);
+    }, 3000);
     
   };
 
@@ -46,36 +47,40 @@ const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price }
 
   return (
     <div key={player.Name} className="player-card">
+       {player.sold && <Confetti gravity={1} />}
       <div className="player-photo">
         <img src="https://bcciplayerimages.s3.ap-south-1.amazonaws.com/ipl/IPLHeadshot2024/2.png" alt={player.Name} />
       </div>
       <div className="player-info">
-        <h2>{player.Name}</h2>
+        <h1>{player.Name}</h1>
         <p>Age: {player.Age}</p>
         <p>Role: {player.Style}</p>
         <p>Batting Style: {player.battingStyle}</p>
         <p>Bowling Style: {player.bowlingStyle}</p>
         <p>Country: India</p>
         <p>Base Price: {player.Price}</p>
+        <h1 className='bidding-price'>Bidding Price: {sale_price}</h1>
         {/* Add more relevant information */}
       </div>
       {player.sold?(
         <div>
           <div className='sold-image'></div>
           <div className='sold-information'>
-            <h3>
+            <h1 style={{padding: '25px'}}> 
               Sold To
-            </h3>
-            <div style={{fontWeight: 'bold'}}>
+            </h1>
+            <div style={{fontWeight: 'bold', fontSize: 'x-large'}}>
               <img style={{alignSelf: 'end'}} src={player.team_logo} alt="Team Logo" className="team-logo card-logo" />
-              {player.team_name}
+              <p>
+                {player.team_name}
+              </p>
             </div>
               {/* <img src={player.team.src}></img> */}
           </div>
         </div>
       ):(
         <div>
-          <div className="sale-button button-8" onClick={() => setShowTeams(!showTeams)}>
+          <div className="sale-button button-8" style={{backgroundColor: isEnterPressed? "green":""}} onClick={() => setShowTeams(!showTeams)}>
             Sale
           </div>
           <div className={`team-overlay ${showTeams ? 'show' : ''}`}>
