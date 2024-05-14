@@ -210,3 +210,11 @@
     box-shadow: none;
     color: #2c5777;
   }
+
+  .card-title{
+    width: inherit;
+    background-color: rgba(0, 0, 0, 0.3);    font-size: xx-large;
+    font-weight: 800;
+    font-style: italic;
+    position: absolute;
+  }
