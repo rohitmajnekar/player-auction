@@ -6,7 +6,7 @@ import Confetti from 'react-confetti'; // Import Confetti component
 import {io} from 'socket.io-client'
 
 
-const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed }) => {
+const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed,set_skipped_player }) => {
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
@@ -26,8 +26,12 @@ const PlayerCard = ({ player, teams, set_sold_player, setTeamsData, sale_price, 
 
     newSocket.on('message', (msg) => {
       if (msg.includes("Button")){
-        console.log(teams.at(0))
-        handleTeamSelect(teams.at(0))
+        if (msg.includes("10")){
+          set_skipped_player(old_players=>[...old_players, playerRef])
+        }else{
+          console.log(teams.at(0))
+          handleTeamSelect(teams.at(0))
+        }
         setMessages(prev => [...prev, msg]);
       }
     });

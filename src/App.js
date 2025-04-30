@@ -26,10 +26,13 @@ const NavBar = () => {
 };
 
 function App() {
+  const isFirstRun = useRef(true);
+
   const [all_players, set_all_players] = useState([])
   const [current_player, set_current_player] = useState({})
   const [unsold_players, set_unsold_player] = useState([])
   const [sold_players, set_sold_player] = useState([])
+  const [skipped_player, set_skipped_player] = useState([])
   const [teamsData, setTeamsData] = useState([
     {
       name: "AGRI TITANS",
@@ -114,17 +117,53 @@ function App() {
 //     socket.emit('bid', { player });
 // };
   
-  useEffect(()=>{
-    console.log(typeof sold_players)
-    const re_calc_unsold = all_players.filter(player => !sold_players.some(s_player => s_player.Contact === player.Contact))
-    set_unsold_player(re_calc_unsold)
-    if (re_calc_unsold.length !== 0){
-      setPrice(current_player.Price)
-      set_current_player(re_calc_unsold.at(0))
-      saveDataToLocalStorage("soldPlayers", sold_players)
-      saveDataToLocalStorage("teamsData",teamsData)
+  // useEffect(()=>{
+  //   console.log(typeof sold_players)
+  //   const re_calc_unsold = all_players.filter(player => !sold_players.some(s_player => s_player.Contact === player.Contact))
+  //   set_unsold_player(re_calc_unsold)
+  //   if (re_calc_unsold.length !== 0){
+  //     setPrice(current_player.Price)
+  //     set_current_player(re_calc_unsold.at(0))
+  //     saveDataToLocalStorage("soldPlayers", sold_players)
+  //     saveDataToLocalStorage("teamsData",teamsData)
+  //   }
+  // },[sold_players])
+
+  useEffect(() => {
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return; // Skip the first run
     }
-  },[sold_players])
+    console.log(typeof sold_players);
+    
+    const re_calc_unsold = all_players.filter(
+      player => !sold_players.some(s_player => s_player.Contact === player.Contact)
+    );
+    
+    const unsold_with_current = all_players.filter(
+      player => !sold_players.some(s_player => s_player.Contact === player.Contact && s_player.Contact != current_player.Contact)
+    );
+    const currentIndex = unsold_with_current.findIndex(
+      player => player.Contact === current_player?.Contact
+    );
+    set_unsold_player(re_calc_unsold);
+  
+    if (re_calc_unsold.length !== 0) {
+      console.log(currentIndex)
+      const nextIndex = currentIndex >= 0 ? currentIndex : 0;
+      const nextPlayer = re_calc_unsold[nextIndex] || re_calc_unsold[0]; // fallback to first if undefined
+  
+      setPrice(nextPlayer.Price);
+      set_current_player(nextPlayer);
+  
+      saveDataToLocalStorage("soldPlayers", sold_players);
+      saveDataToLocalStorage("teamsData", teamsData);
+    }
+  }, [sold_players]);
+
+  useEffect(() => {
+
+  }, [skipped_player]);
   
   const [activeView, setActiveView] = useState('sold'); // Initial active view state
   
@@ -184,6 +223,7 @@ function App() {
         setTeamsData={setTeamsData}
         sale_price={price}
         isEnterPressed={isEnterPressed}
+        set_skipped_player={set_skipped_player}
         />
       </div>
         <PriceModifier
