@@ -1,0 +1,148 @@
+Sr. No,Name,Player Style,Category,Common Code,Age
+1,Parag Mhatre,All Rounder ,A,Parag MhatreAll Rounder A,32
+2,Tejan Shedge,All Rounder ,A,Tejan ShedgeAll Rounder A,28
+3,Siddhesh Mali,All Rounder ,A,Siddhesh MaliAll Rounder A,20
+4,Durvesh More,All Rounder ,A,Durvesh MoreAll Rounder A,25
+5,Akshay kadam,All Rounder ,A,Akshay kadamAll Rounder A,29
+6,Nitu Goriwale,All Rounder ,A,Nitu GoriwaleAll Rounder A,30
+7,Shailesh Mhatre,All Rounder ,A,Shailesh MhatreAll Rounder A,31
+8,Tejas Gaikar,All Rounder ,A,Tejas GaikarAll Rounder A,21
+9,Viraj More,All Rounder ,A,Viraj MoreAll Rounder A,17
+10,Vinit Bala Patil,All Rounder ,A,Vinit Bala PatilAll Rounder A,21
+11,Vaibhav Mhatre,All Rounder ,A,Vaibhav MhatreAll Rounder A,19
+12,Alpesh Mhatre,All Rounder ,A,Alpesh MhatreAll Rounder A,30
+13,Kunal Mandlekar,All Rounder ,A,Kunal MandlekarAll Rounder A,27
+14,Sumeet Khot,All Rounder ,A,Sumeet KhotAll Rounder A,28
+29,Darshan Patil,Batsmen,A,Darshan PatilBatsmenA,27
+30,Alankar Gaikar,Batsmen,A,Alankar GaikarBatsmenA,25
+31,Hitesh Khot,Batsmen,A,Hitesh KhotBatsmenA,36
+32,Paras Mohite,Batsmen,A,Paras MohiteBatsmenA,31
+33,Sameer Patil,Batsmen,A,Sameer PatilBatsmenA,42
+34,Kalpesh Gharat,Batsmen,A,Kalpesh GharatBatsmenA,31
+35,Swapnil Fulare ,Batsmen,A,Swapnil Fulare BatsmenA,27
+36,Suyog Shedge,Batsmen,A,Suyog ShedgeBatsmenA,27
+37,Siddhesh Mohite,Batsmen,A,Siddhesh MohiteBatsmenA,24
+38,Sachin Mali,Batsmen,A,Sachin MaliBatsmenA,38
+39,Dipesh Pravin Kamble,Batsmen,A,Dipesh Pravin KambleBatsmenA,32
+40,Bhavesh Mandlekar,Batsmen,A,Bhavesh MandlekarBatsmenA,30
+41,Sagar Pardhi,Batsmen,A,Sagar PardhiBatsmenA,29
+42,Sujit Misal,Batsmen,A,Sujit MisalBatsmenA,31
+57,Sagar Joshi,Bowler,A,Sagar JoshiBowlerA,32
+58,Pramod Patil,Bowler,A,Pramod PatilBowlerA,44
+59,Soham Patil,Bowler,A,Soham PatilBowlerA,15
+60,Dipesh Pramod Kambli,Bowler,A,Dipesh Pramod KambliBowlerA,14
+61,Tushar Tambadkar,Bowler,A,Tushar TambadkarBowlerA,32
+62,Sharad Khot,Bowler,A,Sharad KhotBowlerA,41
+63,Prasad Gharat,Bowler,A,Prasad GharatBowlerA,37
+64,Janardhan Bhure,Bowler,A,Janardhan BhureBowlerA,55
+65,Prashant Dake,Bowler,A,Prashant DakeBowlerA,37
+66,Sandeep Bhoir,Bowler,A,Sandeep BhoirBowlerA,41
+67,Nilesh More,Bowler,A,Nilesh MoreBowlerA,41
+68,Durvesh Joshi,Bowler,A,Durvesh JoshiBowlerA,24
+69,Sameer Mhatre,Bowler,A,Sameer MhatreBowlerA,32
+70,Shlok Thakur,Bowler,A,Shlok ThakurBowlerA,17
+15,Niranjan Khot,All Rounder ,B,Niranjan KhotAll Rounder B,31
+16,Hemant Vajantri,All Rounder ,B,Hemant VajantriAll Rounder B,36
+17,Vinayak Shisatkar,All Rounder ,B,Vinayak ShisatkarAll Rounder B,41
+18,Uday Mali,All Rounder ,B,Uday MaliAll Rounder B,41
+19,Roshan Kambli,All Rounder ,B,Roshan KambliAll Rounder B,33
+20,Shubham Joshi,All Rounder ,B,Shubham JoshiAll Rounder B,27
+21,Pratham Payar,All Rounder ,B,Pratham PayarAll Rounder B,22
+22,Sanket Hemant Thakur,All Rounder ,B,Sanket Hemant ThakurAll Rounder B,16
+23,Manthan Patil,All Rounder ,B,Manthan PatilAll Rounder B,17
+24,Vikas Thakur,All Rounder ,B,Vikas ThakurAll Rounder B,39
+25,Ritik Mali,All Rounder ,B,Ritik MaliAll Rounder B,24
+26,Rajesh More,All Rounder ,B,Rajesh MoreAll Rounder B,46
+27,Nishant Thakur,All Rounder ,B,Nishant ThakurAll Rounder B,21
+28,Vinay Mali,All Rounder ,B,Vinay MaliAll Rounder B,30
+43,Chirag Chavarkar,Batsmen,B,Chirag ChavarkarBatsmenB,22
+44,Parth Mali,Batsmen,B,Parth MaliBatsmenB,16
+45,Rohit More,Batsmen,B,Rohit MoreBatsmenB,29
+46,Kumar Mhatre,Batsmen,B,Kumar MhatreBatsmenB,21
+47,Manish Bapardekar,Batsmen,B,Manish BapardekarBatsmenB,27
+48,Avinash Mante,Batsmen,B,Avinash ManteBatsmenB,33
+49,Sujal Patil,Batsmen,B,Sujal PatilBatsmenB,20
+50,Naitik Mhatre,Batsmen,B,Naitik MhatreBatsmenB,15
+51,Vishal Vajantri,Batsmen,B,Vishal VajantriBatsmenB,30
+52,Jay Bhagat,Batsmen,B,Jay BhagatBatsmenB,23
+53,Chinmay Thakur,Batsmen,B,Chinmay ThakurBatsmenB,27
+54,Jaite Bhure,Batsmen,B,Jaite BhureBatsmenB,25
+55,Siddhesh Gawade,Batsmen,B,Siddhesh GawadeBatsmenB,17
+56,Ravindra Mandlekar,Batsmen,B,Ravindra MandlekarBatsmenB,27
+71,Girish Gaikar,Bowler,B,Girish GaikarBowlerB,37
+72,Ajinkya Khot,Bowler,B,Ajinkya KhotBowlerB,25
+73,Umesh Patil,Bowler,B,Umesh PatilBowlerB,45
+74,Shlok Majnekar,Bowler,B,Shlok MajnekarBowlerB,11
+75,Suresh Khot,Bowler,B,Suresh KhotBowlerB,42
+76,Nishant Chavarkar,Bowler,B,Nishant ChavarkarBowlerB,16
+77,Prashant Phulare,Bowler,B,Prashant PhulareBowlerB,35
+78,Amol Gharat,Bowler,B,Amol GharatBowlerB,37
+79,Sumit Telge,Bowler,B,Sumit TelgeBowlerB,34
+80,Sagar Thakur,Bowler,B,Sagar ThakurBowlerB,30
+81,Shravan Bagade,Bowler,B,Shravan BagadeBowlerB,19
+82,Arun Mhatre,Bowler,B,Arun MhatreBowlerB,52
+83,Neeraj Mhatre,Bowler,B,Neeraj MhatreBowlerB,16
+84,Prathamesh Thakare,Bowler,B,Prathamesh ThakareBowlerB,25
+85,Bhupendra More,Batsmen,C1,Bhupendra MorePlayerC1,28
+86,Karan Kishor Mokal ,All Rounder ,C1,Karan Kishor Mokal PlayerC1,23
+87,Avinash Dhadve,Bowler,C1,Avinash DhadvePlayerC1,32
+88,Darshan Mali,Batsmen,C1,Darshan MaliBatsmenB,18
+89,Ansh Shitkar ,Bowler,C1,Ansh Shitkar PlayerC1,20
+90,Vinay Gajanan Patil,Batsmen,C1,Vinay Gajanan PatilPlayerC1,28
+91,Rushikesh Harishchandra Thakur,Batsmen,C1,Rushikesh Harishchandra ThakurPlayerC1,31
+92,Raju Wavekar,Batsmen,C1,Raju WavekarPlayerC1,44
+93,Siddhesh Mhatre,Bowler,C1,Siddhesh MhatrePlayerC1,29
+94,Pranav Ravindra Thakur ,Batsmen,C1,Pranav Ravindra Thakur PlayerC1,26
+95,Ajay D. Majnekar,All Rounder ,C1,Ajay D. MajnekarPlayerC1,33
+96,Suhas Kambli,Batsmen,C1,Suhas KambliPlayerC1,18
+97,Ketan Nakte ,Batsmen,C1,Ketan Nakte PlayerC1,26
+98,Ritanshu Thakur,Batsmen,C1,Ritanshu ThakurPlayerC1,29
+99,Vinit Haresh Mali ,Batsmen,C2,Vinit Haresh Mali PlayerC2,22
+100,Sharany Sunil Satamkar ,Batsmen,C2,Sharany Sunil Satamkar PlayerC2,11
+101,Yash Patil,Batsmen,C2,Yash PatilPlayerC2,23
+102,Yash Yashwant Shinde,All Rounder ,C2,Yash Yashwant ShindePlayerC2,17
+103,Pradhan Pradeep Joshi,Bowler,C2,Pradhan Pradeep JoshiPlayerC2,14
+104,Aryan Shedge,All Rounder ,C2,Aryan ShedgePlayerC2,19
+105,Akshay Patil ,Batsmen,C2,Akshay Patil PlayerC1,27
+106,Chirag Tambde,Bowler,C2,Chirag TambdePlayerC2,15
+107,Prathamesh Ajit Mali,Batsmen,C2,Prathamesh Ajit MaliPlayerC2,21
+108,Tejas Mhatre ,Batsmen,C2,Tejas Mhatre PlayerC2,16
+109,Sahil Rajesh Kotwal,All Rounder ,C2,Sahil Rajesh KotwalPlayerC2,22
+110,Krish Bagade,Batsmen,C2,Krish BagadePlayerC2,16
+111,Vinayak Mhatre,Batsmen,C2,Vinayak MhatrePlayerC2,21
+112,Ansh Gore ,Batsmen,C2,Ansh Gore PlayerC2,12
+113,Akshay Thakur,Batsmen,C3,Akshay ThakurPlayerC3,33
+114,Ashish Patil ,Bowler,C3,Ashish Patil PlayerC3,32
+115,Bhagesh Burkar,Batsmen,C3,Bhagesh BurkarPlayerC3,30
+116,Vishal Surendra Gharat ,Batsmen,C3,Vishal Surendra Gharat PlayerC3,47
+117,Rohit Majanekar,Batsmen,C3,Rohit MajanekarPlayerC3,27
+118,Rahul Shedge,All Rounder ,C3,Rahul ShedgePlayerC3,33
+119,Mahesh Lohar ,Batsmen,C3,Mahesh Lohar PlayerC3,43
+120,Nilesh Pavshe ,Bowler,C3,Nilesh Pavshe PlayerC3,40
+121,Rakesh Nakte ,Batsmen,C3,Rakesh Nakte PlayerC3,49
+122,Kishor C Manjanekar ,All Rounder ,C3,Kishor C Manjanekar PlayerC3,30
+123,Kishor Laxman Thakur,Batsmen,C3,Kishor Laxman ThakurPlayerC3,39
+124,Manish Avkirkar,Batsmen,C3,Manish AvkirkarPlayerC3,33
+125,Vinayak Joshi,Batsmen,C3,Vinayak JoshiPlayerC3,42
+126,Sunil Satamkar ,Batsmen,C3,Sunil Satamkar PlayerC3,45
+127,Harshad Mali,Batsmen,C4,Harshad MaliPlayerC4,25
+128,Kunal Patil,Batsmen,C4,Kunal PatilPlayerC4,37
+129,Pandurang Nakte,Batsmen,C4,Pandurang NaktePlayerC4,52
+130,Narendra Thakur ,Bowler,C4,Narendra Thakur PlayerC4,59
+131,Harshad Patil,Batsmen,C4,Harshad PatilPlayerC4,28
+132,Ankit Haresh Mali,Batsmen,C4,Ankit Haresh MaliPlayerC4,27
+133,Sunil Shisatkar,All Rounder ,C4,Sunil ShisatkarPlayerC4,43
+134,Paresh Surendra Gharat ,Bowler,C4,Paresh Surendra Gharat PlayerC4,39
+135,Sandeep Dattatray Patil ,All Rounder ,C4,Sandeep Dattatray Patil PlayerC4,40
+136,Sanjay Suresh Bhoir ,Batsmen,C4,Sanjay Suresh Bhoir PlayerC4,34
+137,Sachin Fulare,Batsmen,C4,Sachin FularePlayerC4,33
+138,Nayan Tambadkar ,Bowler,C4,Nayan Tambadkar PlayerC4,27
+139,Harshal Patil,Batsmen,C4,Harshal PatilPlayerC4,28
+140,Ganesh Nakte ,Batsmen,C4,Ganesh Nakte PlayerC4,48
+141,Vaibhav Thakur,Batsmen,C5,Vaibhav ThakurPlayerC5,35
+142,Akshay Khot,Bowler,C5,Akshay KhotPlayerC2,30
+143,Vijay Ramesh Shedge ,Batsmen,C5,Vijay Ramesh Shedge PlayerC5,44
+144,Vijay Gawde,Batsmen,C5,Vijay GawdePlayerC5,22
+145,Varad Mali,Batsmen,C5,Varad MaliPlayerC5,18
+146,Vinit Vishwas Patil ,Batsmen,C5,Vinit Vishwas Patil PlayerC5,27
+147,Sushil Patil,Batsmen,C5,Sushil PatilPlayerC5,28

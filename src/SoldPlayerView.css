@@ -1,0 +1,15 @@
+ 
+  .price-diff{
+    display: flex;
+  }
+
+  .price-diff p{
+    margin-left: 30px;
+  }
+
+  .delete-button{
+    height: fit-content;
+    margin: 15px;
+    background-color: brown;
+    color: white
+  }
