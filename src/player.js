@@ -8,28 +8,35 @@ import {io} from 'socket.io-client'
 
 
 const PlayerCard = forwardRef((props, ref) => {
-  const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player } = props
+  const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000 } = props
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
+  const currentPlayersRef = useRef(player);
 
+  
+  useEffect(() => {
+    currentPlayersRef.current = player
+  }, [player]);
 
   const handleTeamSelect = (team) => {
     // Handle team selection logic here
     // const data = getDataFromLocalStorage("soldTeams")
     const teamName = team.name
+    const player = currentPlayersRef.current
     player.sold = true
     player.team_name = teamName
     player.team_logo = team.logo
     player.sale_price = sale_price
+    console.log(player)
     // const updatedData = {...data, [teamName]:player}
     // saveDataToLocalStorage("soldTeams", updatedData)
     // console.log("Selected team:", updatedData);
-    console.log("ouside")
     setShowTeams(false)
     setTimeout(() => {
       set_sold_player((old_player) => [...old_player,player])
-      console.log("inside")
+      console.log("inside team handler")
+      console.log(player)
       setTeamsData((oldTeams) => {
         return oldTeams.map((oldTeam) => {
           if (oldTeam.name === teamName) {
@@ -75,9 +82,18 @@ const PlayerCard = forwardRef((props, ref) => {
           }else if (msg.includes("next")){
             console.log("next click...")
             set_next_player()
+          }else if (msg.includes("-1L")){
+            handleAdd5000()
+          }else if (msg.includes("+1L")){
+            handleAdd10000()
           }else{
-            console.log(teams.at(0))
-            handleTeamSelect(teams.at(0))
+            teams.forEach(team => {
+              if (msg.includes(team.name)){
+                handleTeamSelect(team)
+                console.log(team.name)
+                console.log(teams)
+              }
+            });
           }
           setMessages(prev => [...prev, msg]);
         }

@@ -2,7 +2,7 @@ import './App.css';
 import reportWebVitals from './reportWebVitals';
 import PlayerCard from './player';
 import PlayerNavBar from './PlayerNavBar';
-import { useEffect, useRef, useState,useCallback } from 'react';
+import { useEffect, useRef, useState,useCallback, useContext } from 'react';
 import UnsoldPlayersView from './UnsoldPlayersView';
 import PriceModifier from './priceModifier';
 import { saveDataToLocalStorage } from './helper';
@@ -11,8 +11,9 @@ import { getDataFromLocalStorage } from './helper';
 import SoldPlayersView from './SoldPlayerView';
 import TeamView from './TeamView';
 import logo from "./logo.svg"
-import io from 'socket.io-client'
+import {io} from 'socket.io-client'
 import Confetti from 'react-confetti'; // Import Confetti component
+import { SocketContext } from "./SocketContext";
 
 const NavBar = () => {
   return (
@@ -166,6 +167,7 @@ function App() {
   const allPlayersRef = useRef(all_players);
   const soldPlayersRef = useRef(all_players);
   const currentPlayersRef = useRef(all_players);
+  const socket = useContext(SocketContext);
 
   
   useEffect(() => {
@@ -236,14 +238,20 @@ function App() {
       player => player.Photo === current_player?.Photo
     );
     return currentIndex
-  }
+  }    
+
 
   useEffect(()=>{
+    
     console.log(typeof sold_players)
+    
     const re_calc_unsold = all_players.filter(player => !sold_players.some(s_player => s_player.Photo === player.Photo))
     console.log(all_players)
     set_unsold_player(re_calc_unsold)
     if (re_calc_unsold.length !== 0){
+      socket.emit("teamdata", teamsData, (response) => {
+        console.log("Server ACK:", response);
+      });
       const currentIndex = get_current_index()
       console.log(currentIndex)
       const nextIndex = currentIndex >= 0 ? currentIndex : 0;
@@ -288,7 +296,7 @@ function App() {
     // const re_calc_sold = all_players.filter(player => !sold_players.some(s_player => s_player.Contact === player.Contact))
 
   }
-  const [price, setPrice] = useState(10000);
+  const [price, setPrice] = useState(100000);
 
   const handleAdd5000 = () => {
     setPrice(prevPrice => prevPrice - 100000);
@@ -408,6 +416,8 @@ function App() {
         ref={childRef}
         set_next_player={set_next_player}
         set_previous_player={set_previous_player}
+        handleAdd5000={handleAdd5000}
+        handleAdd10000={handleAdd10000}
         />
       </div>
         <PriceModifier

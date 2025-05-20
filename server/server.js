@@ -18,6 +18,15 @@ io.on("connection", (socket) => {
     console.log("Message from client:", msg);
     socket.broadcast.emit("message", msg);
   });
+  socket.on("teamdata", (msg, callback) => {
+    console.log("teamdata from client:", msg);
+
+    // Emit to others
+    socket.broadcast.emit("teamdata", msg);
+
+    // Acknowledge back to sender
+    if (callback) callback({ status: "received" });
+  });
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
