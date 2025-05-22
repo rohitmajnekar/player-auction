@@ -6,13 +6,31 @@
     let teams = [];
     let selectedTeamKey = null;
 
-    socket = io("http://192.168.31.79:5000");
+    socket = io("http://192.168.189.45:5000");
 
     const toggleTeam = (key) => {
         selectedTeamKey = selectedTeamKey === key ? null : key;
     };
+    
+    function getSavedTeamData() {
+        return new Promise((resolve) => {
+            socket.emit("savedteamdata", (response) => {
+                resolve(response.data);
+            });
+        });
+    }
+      onMount(async () => {
+        try {
+            teams = await getSavedTeamData();
+            console.log("Teams loaded:", teams);
+            teams = teams[0]
+        } catch (err) {
+            console.error("Failed to load team data:", err);
+        }
+    });
 
     onMount(() => {
+
         socket.on('teamdata', (data) => {
         console.log('Received data:', data);
         teams = data;
@@ -21,52 +39,6 @@
         // Clean up on unmount
         return () => socket.disconnect();
     });
-    teams = [{
-    "name": "AGRI TITANS",
-    "logo": "1.jpg",
-    "totalPoints": 10000000,
-    "pointsUsed": 960000,
-    "balancePoints": 9040000,
-    "players": [
-        {
-        "Name": "PARAG MHATRE",
-        "Age": "32",
-        "Photo": "Parag MhatreAll Rounder A",
-        "Style": "All Rounder ",
-        "Category": "A",
-        "Price": 300000,
-        "sold": true,
-        "team_name": "AGRI TITANS",
-        "team_logo": "1.jpg",
-        "sale_price": 300000
-        },
-        {
-        "Name": "TEJAN SHEDGE",
-        "Age": "28",
-        "Photo": "Tejan ShedgeAll Rounder A",
-        "Style": "All Rounder ",
-        "Category": "A",
-        "Price": 300000,
-        "sold": true,
-        "team_name": "AGRI TITANS",
-        "team_logo": "1.jpg",
-        "sale_price": 300000
-        },
-        {
-        "Name": "NITU GORIWALE",
-        "Age": "30",
-        "Photo": "Nitu GoriwaleAll Rounder A",
-        "Style": "All Rounder ",
-        "Category": "A",
-        "Price": 300000,
-        "sold": true,
-        "team_name": "AGRI STARTS",
-        "team_logo": "6.jpg",
-        "sale_price": 300000
-        }
-    ],
-    "key": 1
-    }]
     </script>
 
     <main>
@@ -80,7 +52,7 @@
             <div class="team-header">
                 <h2>{team.name}</h2>
                 <p>Players: {team.players.length}</p>
-                <p>Balance Points: {team.balancePoints.toLocaleString()}</p>
+                <p>Balance Points: {team.balancePoints}</p>
             </div>
 
             {#if selectedTeamKey === team.key}

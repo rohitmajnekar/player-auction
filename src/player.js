@@ -8,7 +8,7 @@ import {io} from 'socket.io-client'
 
 
 const PlayerCard = forwardRef((props, ref) => {
-  const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000 } = props
+  const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category } = props
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
@@ -85,6 +85,8 @@ const PlayerCard = forwardRef((props, ref) => {
           }else if (msg.includes("-1L")){
             handleAdd5000()
           }else if (msg.includes("+1L")){
+            handleAdd10000()
+          }else if (msg.includes("set category")){
             handleAdd10000()
           }else{
             teams.forEach(team => {

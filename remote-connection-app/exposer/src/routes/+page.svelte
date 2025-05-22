@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { socket } from '$lib/socket';
   let messages = [];
+  let selectedOption = 'A'
   const teams = [{
         name: "AGRI TITANS",
         logo: "1.jpg",
@@ -131,6 +132,7 @@
     // Add more teams as needed
   ];
   onMount(() => {
+    
 
     socket.on("connect", () => {
       console.log("✅ Connected to server:", socket.id);
@@ -140,14 +142,22 @@
       messages = [...messages, msg];
     });
   });
-
+  
   const sendMessage = (num) => {
-    const msg = `Button ${num} clicked`;
+    const msg = `${num}`;
+    selectedOption=msg
     socket.emit("message", msg);
   };
 </script>
 <main>
   <h1>📡 Remote Client</h1>
+   <div class="button-grid">
+    {#each ["A", "B", "C", "D"] as option}
+      <button style="background-color: {selectedOption === option ? 'red' : 'green'}" on:click={() => sendMessage("set category " + option)}>
+        {option}
+      </button>
+    {/each}
+  </div>
   <br>
   <div class="button-grid">
     {#each ["-1L", "+1L"] as option}

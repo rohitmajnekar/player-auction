@@ -168,6 +168,7 @@ function App() {
   const soldPlayersRef = useRef(all_players);
   const currentPlayersRef = useRef(all_players);
   const socket = useContext(SocketContext);
+  const [currrent_category, set_currrent_category] = useState('A')
 
   
   useEffect(() => {
@@ -418,6 +419,7 @@ function App() {
         set_previous_player={set_previous_player}
         handleAdd5000={handleAdd5000}
         handleAdd10000={handleAdd10000}
+        set_currrent_category={set_currrent_category}
         />
       </div>
         <PriceModifier
