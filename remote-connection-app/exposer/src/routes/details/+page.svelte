@@ -6,7 +6,7 @@
     let teams = [];
     let selectedTeamKey = null;
 
-    socket = io("http://192.168.189.45:5000");
+    socket = io("http://192.168.0.110:5000");
 
     const toggleTeam = (key) => {
         selectedTeamKey = selectedTeamKey === key ? null : key;

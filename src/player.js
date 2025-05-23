@@ -5,13 +5,14 @@ import PriceModifier from './priceModifier';
 import Confetti from 'react-confetti'; // Import Confetti component
 import { useImperativeHandle } from 'react';
 import {io} from 'socket.io-client'
+import { SocketContext } from "./SocketContext";
 
 
 const PlayerCard = forwardRef((props, ref) => {
   const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category } = props
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [socket, setSocket] = useState(null);
+  const [socket, setSocket] = useState(SocketContext);
   const currentPlayersRef = useRef(player);
 
   
@@ -75,33 +76,33 @@ const PlayerCard = forwardRef((props, ref) => {
       });
   
       newSocket.on('message', (msg) => {
-        if (msg.includes("Button")){
-          if (msg.includes("prev")){
-            console.log("prev click...")
-            set_previous_player()
-          }else if (msg.includes("next")){
-            console.log("next click...")
-            set_next_player()
-          }else if (msg.includes("-1L")){
-            handleAdd5000()
-          }else if (msg.includes("+1L")){
-            handleAdd10000()
-          }else if (msg.includes("set category")){
-            handleAdd10000()
-          }else{
-            teams.forEach(team => {
-              if (msg.includes(team.name)){
-                handleTeamSelect(team)
-                console.log(team.name)
-                console.log(teams)
-              }
-            });
-          }
-          setMessages(prev => [...prev, msg]);
+        console.log("meesage-recieve", msg, msg.includes("next"))
+        if (msg.includes("prev")){
+          console.log("prev click...")
+          set_previous_player()
+        }else if (msg.includes("next")){
+          console.log("next click...")
+          set_next_player()
+        }else if (msg.includes("-1L")){
+          handleAdd5000()
+        }else if (msg.includes("+1L")){
+          handleAdd10000()
+        }else if (msg.includes("set category")){
+          handleAdd10000()
+        }else{
+          teams.forEach(team => {
+            if (msg.includes(team.name)){
+              handleTeamSelect(team)
+              console.log(team.name)
+              console.log(teams)
+            }
+          });
         }
+          setMessages(prev => [...prev, msg]);
+        
       });
   
-      return () => newSocket.close();
+      // return () => newSocket.close();
     }, []);
     
 
