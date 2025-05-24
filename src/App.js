@@ -182,7 +182,7 @@ function App() {
           Timestamp: row.Timestamp,
           Username: row.Username,
           Name: row['Name']?row['Name'].toUpperCase():row['Name'],
-          Age: row['Age'],
+          // Age: row['Age'],
           // Contact: row['खेळाडूचे  कॉन्टॅक्ट / Player Contact'],
           Photo: row['Common Code'],
           Style: row['Player Style'],

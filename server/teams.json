@@ -4,70 +4,9 @@
       "name": "AGRI TITANS",
       "logo": "1.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 4400000,
-      "balancePoints": 5600000,
-      "players": [
-        {
-          "Name": "PARAG MHATRE",
-          "Age": "32",
-          "Photo": "Parag MhatreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI TITANS",
-          "team_logo": "1.jpg",
-          "sale_price": 500000
-        },
-        {
-          "Name": "TEJAN SHEDGE",
-          "Age": "28",
-          "Photo": "Tejan ShedgeAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI TITANS",
-          "team_logo": "1.jpg",
-          "sale_price": 3000000
-        },
-        {
-          "Name": "SIDDHESH MALI",
-          "Age": "20",
-          "Photo": "Siddhesh MaliAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI TITANS",
-          "team_logo": "1.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "DURVESH MORE",
-          "Age": "25",
-          "Photo": "Durvesh MoreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI TITANS",
-          "team_logo": "1.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "AKSHAY KADAM",
-          "Age": "29",
-          "Photo": "Akshay kadamAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI TITANS",
-          "team_logo": "1.jpg",
-          "sale_price": 300000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 1
     },
     {
@@ -78,10 +17,9 @@
       "balancePoints": 9700000,
       "players": [
         {
-          "Name": "NITU GORIWALE",
-          "Age": "30",
-          "Photo": "Nitu GoriwaleAll Rounder A",
-          "Style": "All Rounder ",
+          "Name": "DURVESH JOSHI",
+          "Photo": "Durvesh Joshi",
+          "Style": "All Rounder",
           "Category": "A",
           "Price": 300000,
           "sold": true,
@@ -96,108 +34,22 @@
       "name": "AGRI CHARGERS",
       "logo": "3.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 1200000,
-      "balancePoints": 8800000,
-      "players": [
-        {
-          "Name": "VAIBHAV MHATRE",
-          "Age": "19",
-          "Photo": "Vaibhav MhatreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI CHARGERS",
-          "team_logo": "3.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "SUMEET KHOT",
-          "Age": "28",
-          "Photo": "Sumeet KhotAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI CHARGERS",
-          "team_logo": "3.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "SUMEET KHOT",
-          "Age": "28",
-          "Photo": "Sumeet KhotAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI CHARGERS",
-          "team_logo": "3.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "SUMEET KHOT",
-          "Age": "28",
-          "Photo": "Sumeet KhotAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI CHARGERS",
-          "team_logo": "3.jpg",
-          "sale_price": 300000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 3
     },
     {
       "name": "AGRI WARRIORS",
       "logo": "4.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 1200000,
-      "balancePoints": 8800000,
+      "pointsUsed": 300000,
+      "balancePoints": 9700000,
       "players": [
         {
-          "Name": "VIRAJ MORE",
-          "Age": "17",
-          "Photo": "Viraj MoreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI WARRIORS",
-          "team_logo": "4.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "KUNAL MANDLEKAR",
-          "Age": "27",
-          "Photo": "Kunal MandlekarAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI WARRIORS",
-          "team_logo": "4.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "KUNAL MANDLEKAR",
-          "Age": "27",
-          "Photo": "Kunal MandlekarAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI WARRIORS",
-          "team_logo": "4.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "KUNAL MANDLEKAR",
-          "Age": "27",
-          "Photo": "Kunal MandlekarAll Rounder A",
-          "Style": "All Rounder ",
+          "Name": "YASH MANDLEKAR",
+          "Photo": "Yash Mandlekar",
+          "Style": "All Rounder",
           "Category": "A",
           "Price": 300000,
           "sold": true,
@@ -212,104 +64,18 @@
       "name": "AGRI SPARTANS",
       "logo": "5.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 1200000,
-      "balancePoints": 8800000,
-      "players": [
-        {
-          "Name": "TEJAS GAIKAR",
-          "Age": "21",
-          "Photo": "Tejas GaikarAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI SPARTANS",
-          "team_logo": "5.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "VINIT BALA PATIL",
-          "Age": "21",
-          "Photo": "Vinit Bala PatilAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI SPARTANS",
-          "team_logo": "5.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "ALPESH MHATRE",
-          "Age": "30",
-          "Photo": "Alpesh MhatreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI SPARTANS",
-          "team_logo": "5.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "ALPESH MHATRE",
-          "Age": "30",
-          "Photo": "Alpesh MhatreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI SPARTANS",
-          "team_logo": "5.jpg",
-          "sale_price": 300000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 5
     },
     {
       "name": "AGRI STARTS",
       "logo": "6.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 900000,
-      "balancePoints": 9100000,
-      "players": [
-        {
-          "Name": "HITESH KHOT",
-          "Age": "36",
-          "Photo": "Hitesh KhotBatsmenA",
-          "Style": "Batsmen",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI STARTS",
-          "team_logo": "6.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "HITESH KHOT",
-          "Age": "36",
-          "Photo": "Hitesh KhotBatsmenA",
-          "Style": "Batsmen",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI STARTS",
-          "team_logo": "6.jpg",
-          "sale_price": 300000
-        },
-        {
-          "Name": "HITESH KHOT",
-          "Age": "36",
-          "Photo": "Hitesh KhotBatsmenA",
-          "Style": "Batsmen",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI STARTS",
-          "team_logo": "6.jpg",
-          "sale_price": 300000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 6
     },
     {
@@ -325,22 +91,9 @@
       "name": "AGRI ROYALS",
       "logo": "8.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 700000,
-      "balancePoints": 9300000,
-      "players": [
-        {
-          "Name": "SHAILESH MHATRE",
-          "Age": "31",
-          "Photo": "Shailesh MhatreAll Rounder A",
-          "Style": "All Rounder ",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI ROYALS",
-          "team_logo": "8.jpg",
-          "sale_price": 700000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 8
     },
     {
@@ -356,9 +109,21 @@
       "name": "AGRI BLASTERS",
       "logo": "10.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 0,
-      "balancePoints": 10000000,
-      "players": [],
+      "pointsUsed": 500000,
+      "balancePoints": 9500000,
+      "players": [
+        {
+          "Name": "VIRAJ MORE",
+          "Photo": "Viraj More",
+          "Style": "All Rounder",
+          "Category": "A",
+          "Price": 300000,
+          "sold": true,
+          "team_name": "AGRI BLASTERS",
+          "team_logo": "10.jpg",
+          "sale_price": 500000
+        }
+      ],
       "key": 10
     },
     {

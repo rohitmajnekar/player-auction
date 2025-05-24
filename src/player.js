@@ -124,8 +124,7 @@ const PlayerCard = forwardRef((props, ref) => {
         
         <div className="player-info">
           <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
-          <p>Age: {player.Age}</p>
-          <p>Player Style: {player.Style}</p>
+\          <p>Player Style: {player.Style}</p>
           <p>Player Category: {player.Category}</p>
           <p>Base Price: {player.Price}</p>
           <h1 className='bidding-price'> Price: {sale_price/100000}L</h1>

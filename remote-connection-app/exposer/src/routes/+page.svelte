@@ -1,328 +1,128 @@
-<script>
-  import { onMount } from "svelte";
-  import { socket } from '$lib/socket';
-  let messages = [];
-  let selectedOption = 'A'
-  const teams = [{
-        name: "AGRI TITANS",
-        logo: "1.jpg",
-        totalPoints: 10000000,
-        pointsUsed: 0,
-        balancePoints: 10000000,
-        players: [],
-        key: 1
-      },
-    {
-      name: "AGRI CHALLENGERS",
-      logo: "2.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 2
-    },
-    {
-      name: "AGRI CHARGERS",
-      logo: "3.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 3
-    },
-    {
-      name: "AGRI WARRIORS",
-      logo: "4.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 4
-    },
-    {
-      name: "AGRI SPARTANS",
-      logo: "5.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 5
-    },
-    {
-      name: "AGRI STARTS",
-      logo: "6.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 6
-    },
-    {
-      name: "AGRI STRIKERS",
-      logo: "7.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 7
-    },
-    {
-      name: "AGRI ROYALS",
-      logo: "8.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 8
-    },
-    {
-      name: "AGRI THUNDER",
-      logo: "9.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 9
-    },
-    {
-      name: "AGRI BLASTERS",
-      logo: "10.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 10
-    },
-    {
-      name: "AGRI DEVILS",
-      logo: "11.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 11
-    },
-    {
-      name: "AGRI KINGS",
-      logo: "12.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 12
-    },
-    {
-      name: "AGRI FIGHTERS",
-      logo: "13.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 13
-    },
-    {
-      name: "AGRI RIDERS",
-      logo: "14.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 14
-    },
-    // Add more teams as needed
-  ];
-  onMount(() => {
+<script lang="ts">
+    import { onMount } from 'svelte';
+    import io from 'socket.io-client';
+    let socket;
+
+    let teams = [];
+    let selectedTeamKey = null;
+
+    socket = io("http://192.168.31.6:5000");
+
+    const toggleTeam = (key) => {
+        selectedTeamKey = selectedTeamKey === key ? null : key;
+    };
     
-
-    socket.on("connect", () => {
-      console.log("✅ Connected to server:", socket.id);
+    function getSavedTeamData() {
+        return new Promise((resolve) => {
+            socket.emit("savedteamdata", (response) => {
+                resolve(response.data);
+            });
+        });
+    }
+      onMount(async () => {
+        try {
+            teams = await getSavedTeamData();
+            console.log("Teams loaded:", teams);
+            teams = teams[0]
+        } catch (err) {
+            console.error("Failed to load team data:", err);
+        }
     });
 
-    socket.on("message", (msg) => {
-      messages = [...messages, msg];
+    onMount(() => {
+
+        socket.on('teamdata', (data) => {
+        console.log('Received data:', data);
+        teams = data;
+        });
+
+        // Clean up on unmount
+        return () => socket.disconnect();
     });
-  });
-  
-  const sendMessage = (num) => {
-    const msg = `${num}`;
-    selectedOption=msg
-    socket.emit("message", msg);
-  };
-</script>
-<main>
-  <h1>📡 Remote Client</h1>
-   <div class="button-grid">
-    {#each ["got to top"] as option}
-      <button style="background-color: red" on:click={() => sendMessage(  option)}>
-        {option}
-      </button>
-    {/each}
-  </div>
-  <br>
-  <div class="button-grid">
-    {#each ["-1L", "+1L"] as option}
-      <button style="background-color: chocolate;" on:click={() => sendMessage(option)}>
-        {option}
-      </button>
-    {/each}
-  </div>
-  <br>
-  <div class="button-grid">
-    {#each teams as team}
-      <button on:click={() => sendMessage(team.name)}>
-        {team.name}
-      </button>
-    {/each}
-  </div>
+    </script>
 
-  <div class="button-grid">
-    {#each ["prev", "next"] as option}
-      <button style="background-color: chocolate;" on:click={() => sendMessage(option)}>
-        {option}
-      </button>
-    {/each}
-  </div>
+    <main>
+    <h1>Live Team Details</h1>
 
+    {#if teams.length === 0}
+        <p>Waiting for team data...</p>
+    {:else}
+        {#each teams as team}
+        <div class="team-card" on:click={() => toggleTeam(team.key)}>
+            <div class="team-header">
+                <h2>{team.name}</h2>
+                <p>Players: {team.players.length}</p>
+                <p>Balance Points: {team.balancePoints}</p>
+            </div>
 
-  <h2>Messages:</h2>
-  <ul>
-    {#each messages as msg}
-      <li>{msg}</li>
-    {/each}
-  </ul>
-</main>
+            {#if selectedTeamKey === team.key}
+            <table>
+                <thead>
+                <tr>
+                    <th>Player Name</th>
+                    <th>Sale Price</th>
+                    <th>Style</th>
+                </tr>
+                </thead>
+                <tbody>
+                {#each team.players.filter(p => p.Name) as player}
+                    <tr>
+                    <td>{player.Name}</td>
+                    <td>{player.sale_price?.toLocaleString()}</td>
+                    <td>{player.Style}</td>
+                    </tr>
+                {/each}
+                </tbody>
+            </table>
+            {/if}
+        </div>
+        {/each}
+    {/if}
+    </main>
 
-<style>
-  main {
-    max-width: 120vw;
-    margin: auto;
-    padding: 1.5rem;
-    font-family: system-ui, sans-serif;
-    text-align: center;
-  }
+    <style>
+    main {
+        max-width: 900px;
+        margin: auto;
+        padding: 1rem;
+    }
 
-  h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
+    .team-card {
+        background: #f7f7f7;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
 
-  .button-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 12px;
-    margin-bottom: 1.5rem;
-  }
+    .team-header {
+        margin-left: 10px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between  ;
+        gap: 1rem;
+    }
 
-  button {
-    padding: 1rem;
-    font-size: 0.6rem;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 8px;
-    transition: background-color 0.2s;
-    overflow-wrap: break-word;
-    max-width: 100%; /* Prevent overflow */
-    text-align: center;
+    .logo {
+        width: 60px;
+        height: 60px;
+        object-fit: contain;
+    }
 
-  }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1rem;
+    }
 
-  button:active {
-    background-color: #0056b3;
-  }
+    th, td {
+        padding: 0.6rem;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
 
-  ul {
-    list-style: none;
-    padding-left: 0;
-    max-height: 200px;
-    overflow-y: auto;
-    background: #f9f9f9;
-    border-radius: 8px;
-    padding: 0.5rem;
-  }
-
-  li {
-    padding: 0.3rem 0;
-    font-size: 0.95rem;
-  }
-  :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-.card {
-  padding: 2em;
-}
-
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-}
-
+    th {
+        background-color: #e8e8e8;
+    }
 </style>
