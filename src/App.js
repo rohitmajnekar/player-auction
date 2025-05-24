@@ -14,6 +14,7 @@ import logo from "./logo.svg"
 import {io} from 'socket.io-client'
 import Confetti from 'react-confetti'; // Import Confetti component
 import { SocketContext } from "./SocketContext";
+import LogoPopup from './LogoPopup';
 
 const NavBar = () => {
   return (
@@ -169,6 +170,7 @@ function App() {
   const currentPlayersRef = useRef(all_players);
   const socket = useContext(SocketContext);
   const [currrent_category, set_currrent_category] = useState('A')
+  const [showPopup, setShowPopup] = useState(false);
 
   
   useEffect(() => {
@@ -418,6 +420,16 @@ function App() {
   return (
     <div className="App" onKeyDown={handleKeyPress} ref={playerCardRef} tabIndex={0}>
       <NavBar/>
+      {/* <div className="p-10">
+        <button
+          onClick={() => setShowPopup(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded"
+        >
+          Show Logo Popup
+        </button>
+
+        <LogoPopup show={showPopup} onClose={() => setShowPopup(false)} />
+      </div> */}
       <div className="player-card-container">
         <PlayerCard 
         player={current_player} 
