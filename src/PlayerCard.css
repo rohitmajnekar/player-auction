@@ -41,6 +41,7 @@
     position:relative ;
     top: 85px;
     margin-left: 10px;
+    left: -120px;
   }
   
   .player-photo img {
@@ -60,7 +61,7 @@
   }
   
   .player-info {
-    margin-left: 15px;
+    margin-left: 200px;
     top: 20px;
     position: relative;
     text-align: left;
@@ -140,7 +141,7 @@
   }
   
   .bidding-price{
-    margin-top: 250px !important;
+    margin-top: 170px !important;
     font-size: xxx-large;
     color: goldenrod;
     -webkit-text-stroke: 1px #ffffc2;
@@ -151,7 +152,7 @@
     background-size: contain;
     width: 400px;
     background-repeat: no-repeat;
-    left: 110px;
+    right: 350px;
     position: absolute;
     top: 270px;
     animation: soldAnimation 0.5s ease forwards 0.2s;

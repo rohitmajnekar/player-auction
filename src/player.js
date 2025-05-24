@@ -14,11 +14,15 @@ const PlayerCard = forwardRef((props, ref) => {
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(SocketContext);
   const currentPlayersRef = useRef(player);
+  const salePriceRef = useRef(sale_price);
 
   
   useEffect(() => {
     currentPlayersRef.current = player
   }, [player]);
+  useEffect(() => {
+    salePriceRef.current = sale_price
+  }, [sale_price]);
 
   const handleTeamSelect = (team) => {
     // Handle team selection logic here
@@ -28,7 +32,7 @@ const PlayerCard = forwardRef((props, ref) => {
     player.sold = true
     player.team_name = teamName
     player.team_logo = team.logo
-    player.sale_price = sale_price
+    player.sale_price = salePriceRef.current
     console.log(player)
     // const updatedData = {...data, [teamName]:player}
     // saveDataToLocalStorage("soldTeams", updatedData)
@@ -87,8 +91,9 @@ const PlayerCard = forwardRef((props, ref) => {
           handleAdd5000()
         }else if (msg.includes("+1L")){
           handleAdd10000()
-        }else if (msg.includes("set category")){
-          handleAdd10000()
+        }else if (msg.includes("got to top")){
+          console.log("inside player go to")
+          set_next_player(0)
         }else{
           teams.forEach(team => {
             if (msg.includes(team.name)){
@@ -116,9 +121,7 @@ const PlayerCard = forwardRef((props, ref) => {
        <div className='card-title'>
          APL 2024 Auctions
        </div>
-        <div className="player-photo">
-          <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
-        </div>
+        
         <div className="player-info">
           <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
           <p>Age: {player.Age}</p>
@@ -127,6 +130,9 @@ const PlayerCard = forwardRef((props, ref) => {
           <p>Base Price: {player.Price}</p>
           <h1 className='bidding-price'> Price: {sale_price/100000}L</h1>
           {/* Add more relevant information */}
+        </div>
+        <div className="player-photo">
+          <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
         </div>
         {player.sold?(
           <div>

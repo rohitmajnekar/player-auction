@@ -152,8 +152,8 @@
 <main>
   <h1>📡 Remote Client</h1>
    <div class="button-grid">
-    {#each ["A", "B", "C", "D"] as option}
-      <button style="background-color: {selectedOption === option ? 'red' : 'green'}" on:click={() => sendMessage("set category " + option)}>
+    {#each ["got to top"] as option}
+      <button style="background-color: red" on:click={() => sendMessage(  option)}>
         {option}
       </button>
     {/each}

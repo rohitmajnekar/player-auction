@@ -36,126 +36,126 @@ function App() {
       {
         name: "AGRI TITANS",
         logo: "1.jpg",
-        totalPoints: 1000000,
+        totalPoints: 10000000,
         pointsUsed: 0,
-        balancePoints: 1000000,
+        balancePoints: 10000000,
         players: [],
         key: 1
       },
     {
       name: "AGRI CHALLENGERS",
       logo: "2.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 2
     },
     {
       name: "AGRI CHARGERS",
       logo: "3.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 3
     },
     {
       name: "AGRI WARRIORS",
       logo: "4.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 4
     },
     {
       name: "AGRI SPARTANS",
       logo: "5.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 5
     },
     {
       name: "AGRI STARTS",
       logo: "6.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 6
     },
     {
       name: "AGRI STRIKERS",
       logo: "7.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 7
     },
     {
       name: "AGRI ROYALS",
       logo: "8.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 8
     },
     {
       name: "AGRI THUNDER",
       logo: "9.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 9
     },
     {
       name: "AGRI BLASTERS",
       logo: "10.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 10
     },
     {
       name: "AGRI DEVILS",
       logo: "11.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 11
     },
     {
       name: "AGRI KINGS",
       logo: "12.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 12
     },
     {
       name: "AGRI FIGHTERS",
       logo: "13.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 13
     },
     {
       name: "AGRI RIDERS",
       logo: "14.jpg",
-      totalPoints: 1000000,
+      totalPoints: 10000000,
       pointsUsed: 0,
-      balancePoints: 1000000,
+      balancePoints: 10000000,
       players: [],
       key: 14
     },
@@ -317,23 +317,35 @@ function App() {
     return currentIndex
   }
 
-  const set_next_player = useCallback(() => {
-    console.log("soldplauyer",soldPlayersRef.current)
-    console.log("all_players",allPlayersRef.current )
-    const re_calc_unsold = allPlayersRef.current.filter(
-      player => !soldPlayersRef.current.some(s_player => s_player.Photo === player.Photo)
-    );
-    console.log("re_calc_unsold",re_calc_unsold )
-    const currentIndex = re_calc_unsold.findIndex(
-      player => player.Photo === currentPlayersRef.current?.Photo
-    );
-    console.log("currentIndex",currentIndex )
-    const nextIndex = currentIndex+1 >= 0 ? currentIndex+1 : 0;
-    const nextPlayer = re_calc_unsold[nextIndex] || re_calc_unsold[0];
-    console.log(nextPlayer)
-
-    setPrice(nextPlayer.Price);
-    set_current_player(nextPlayer);
+  const set_next_player = useCallback((index=null) => {
+    if( index != null){
+      console.log("go ro rop teripafwre")
+      const re_calc_unsold = allPlayersRef.current.filter(
+        player => !soldPlayersRef.current.some(s_player => s_player.Photo === player.Photo)
+      );
+      const nextPlayer = re_calc_unsold[0];
+      console.log(nextPlayer)
+      setPrice(nextPlayer.Price);
+      set_current_player(nextPlayer);
+    }else{
+      console.log("soldplauyer",soldPlayersRef.current)
+      console.log("all_players",allPlayersRef.current )
+      const re_calc_unsold = allPlayersRef.current.filter(
+        player => !soldPlayersRef.current.some(s_player => s_player.Photo === player.Photo)
+      );
+      console.log("re_calc_unsold",re_calc_unsold )
+      const currentIndex = re_calc_unsold.findIndex(
+        player => player.Photo === currentPlayersRef.current?.Photo
+      );
+      console.log("currentIndex",currentIndex )
+      const nextIndex = currentIndex+1 >= 0 ? currentIndex+1 : 0;
+      const nextPlayer = re_calc_unsold[nextIndex] || re_calc_unsold[0];
+      console.log(nextPlayer)
+  
+      setPrice(nextPlayer.Price);
+      set_current_player(nextPlayer);
+      
+    }
   }, [allPlayersRef.current , soldPlayersRef.current]);
 
   const set_previous_player = useCallback(() => {
