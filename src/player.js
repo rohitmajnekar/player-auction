@@ -1,18 +1,17 @@
 import React, { forwardRef, useEffect, useState,useRef } from 'react';
 import './PlayerCard.css'; // Import CSS for styling
-import { saveDataToLocalStorage, getDataFromLocalStorage } from './helper';
 import PriceModifier from './priceModifier';
 import Confetti from 'react-confetti'; // Import Confetti component
 import { useImperativeHandle } from 'react';
 import {io} from 'socket.io-client'
-import { SocketContext } from "./SocketContext";
+import { sellPlayer } from './helper';
 
 
 const PlayerCard = forwardRef((props, ref) => {
-  const { player, teams, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category } = props
+  const { player, teams, set_current_player, set_all_players, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category, setShowSpinner, setSpinTheWheel } = props
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
-  const [socket, setSocket] = useState(SocketContext);
+  const [socket, setSocket] = useState(null);
   const currentPlayersRef = useRef(player);
   const salePriceRef = useRef(sale_price);
 
@@ -24,39 +23,58 @@ const PlayerCard = forwardRef((props, ref) => {
     salePriceRef.current = sale_price
   }, [sale_price]);
 
-  const handleTeamSelect = (team) => {
-    // Handle team selection logic here
-    // const data = getDataFromLocalStorage("soldTeams")
-    const teamName = team.name
-    const player = currentPlayersRef.current
-    player.sold = true
-    player.team_name = teamName
-    player.team_logo = team.logo
-    player.sale_price = salePriceRef.current
-    console.log(player)
-    // const updatedData = {...data, [teamName]:player}
-    // saveDataToLocalStorage("soldTeams", updatedData)
-    // console.log("Selected team:", updatedData);
-    setShowTeams(false)
+  const handleTeamSelect = async (team) => {
+    const teamName = team.name;
+    const currentPlayer = currentPlayersRef.current;
+    const playerCopy = {
+      ...currentPlayer,
+      sold: true,
+      team_id: team.id || team.key || null,
+      team_name: teamName,
+      team_logo: team.logo,
+      sale_price: salePriceRef.current,
+    };
+
+    try {
+      await sellPlayer({
+        photo: playerCopy.Photo,
+        team_id: playerCopy.team_id,
+        team_name: playerCopy.team_name,
+        team_logo: playerCopy.team_logo,
+        sale_price: playerCopy.sale_price,
+      });
+    } catch (error) {
+      console.error('Unable to persist player sale to server:', error);
+    }
+
+    setShowTeams(false);
+    if (set_current_player) {
+      set_current_player(playerCopy);
+    }
+    set_all_players((oldPlayers) => {
+      return oldPlayers.map((existingPlayer) => {
+        if (existingPlayer.Photo === playerCopy.Photo) {
+          return playerCopy;
+        }
+        return existingPlayer;
+      });
+    });
     setTimeout(() => {
-      set_sold_player((old_player) => [...old_player,player])
-      console.log("inside team handler")
-      console.log(player)
+      set_sold_player((old_player) => [...old_player, playerCopy]);
       setTeamsData((oldTeams) => {
         return oldTeams.map((oldTeam) => {
           if (oldTeam.name === teamName) {
             return {
               ...oldTeam,
-              pointsUsed: oldTeam.pointsUsed + player.sale_price,
-              balancePoints: oldTeam.balancePoints - player.sale_price,
-              players: [...oldTeam.players, player],
+              pointsUsed: oldTeam.pointsUsed + playerCopy.sale_price,
+              balancePoints: oldTeam.balancePoints - playerCopy.sale_price,
+              players: [...oldTeam.players, playerCopy],
             };
           }
           return oldTeam;
         });
       });
     }, 3000);
-    
   };
 
   // function get_current_index(){
@@ -91,10 +109,21 @@ const PlayerCard = forwardRef((props, ref) => {
           handleAdd5000()
         }else if (msg.includes("+1L")){
           handleAdd10000()
-        }else if (msg.includes("got to top")){
+        }else if (msg.includes("Go to 1st Player in List")){
           console.log("inside player go to")
           set_next_player(0)
-        }else{
+        }else if (msg.includes("spinTheWheel")){
+          console.log("spinning the wheel...")
+          setSpinTheWheel(prev => !prev)
+         }
+        else if (msg.includes("toggleSpinner")){
+          console.log("toggling spinner...")
+          if (msg.includes("true")){
+            setShowSpinner(prev => true)
+          }else{
+            setShowSpinner(prev => false)
+          }
+         }else{
           teams.forEach(team => {
             if (msg.includes(team.name)){
               handleTeamSelect(team)
@@ -124,7 +153,7 @@ const PlayerCard = forwardRef((props, ref) => {
         
         <div className="player-info">
           <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
-\          <p>Player Style: {player.Style}</p>
+          <p>Player Style: {player.Style}</p>
           <p>Player Category: {player.Category}</p>
           <p>Base Price: {player.Price}</p>
           <h1 className='bidding-price'> Price: {sale_price/100000}L</h1>

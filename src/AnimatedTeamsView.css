@@ -1,0 +1,241 @@
+/* AnimatedTeamsView.css */
+
+.animated-teams-view {
+  width: 100%;
+  height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(0, 255, 255, 0.16), transparent 18%),
+    radial-gradient(circle at 85% 15%, rgba(255, 0, 255, 0.12), transparent 16%),
+    radial-gradient(circle at 30% 80%, rgba(0, 255, 127, 0.10), transparent 20%),
+    linear-gradient(135deg, #03050d 0%, #08122a 35%, #0a0f1e 60%, #050811 100%);
+  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  position: relative;
+}
+
+.animated-teams-view.entering .animated-team-card {
+  animation: cardEntry 5s ease-in-out var(--card-delay, 0s) forwards;
+}
+
+.animated-teams-view.glowing .animated-team-card {
+  /* animation: glowPulse 2s ease-in-out 0s infinite forwards; */
+  opacity: 1;
+  transform: translateX(0) scale(1);
+}
+
+.card-cell {
+  position: static;
+  overflow: visible;
+}
+
+.animated-team-card {
+  position: absolute;
+  width: calc((100% - ((var(--cols) - 1) * var(--gap))) / var(--cols));
+  height: calc((100% - ((var(--rows) - 1) * var(--gap))) / var(--rows));
+  top: calc((var(--row) * (100% - ((var(--rows) - 1) * var(--gap)))) / var(--rows) + (var(--row) * var(--gap)));
+  left: calc((var(--col) * (100% - ((var(--cols) - 1) * var(--gap)))) / var(--cols) + (var(--col) * var(--gap)));
+  background: linear-gradient(180deg, rgba(10, 20, 40, 0.94), rgba(18, 32, 56, 0.92));
+  border: 1px solid rgba(88, 196, 255, 0.18);
+  border-radius: 24px;
+  padding: 22px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.03), 0 18px 40px rgba(0, 145, 255, 0.12), 0 0 40px rgba(37, 199, 255, 0.10);
+  backdrop-filter: blur(18px);
+  opacity: 0;
+  transform: translateX(-120vw) scale(0.2);
+  transform-origin: center center;
+  z-index: 1;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.animated-team-logo {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid rgba(123, 241, 255, 0.8);
+  box-shadow: 0 0 18px rgba(123, 241, 255, 0.18);
+  margin-bottom: 15px;
+  opacity: 0;
+  transform: translateY(20px) rotate(0deg);
+  animation: showLogo 3s ease-out forwards;
+  animation-delay: calc(var(--card-delay, 0s) + 1s);
+}
+
+.animated-owner-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 3px solid rgba(37, 199, 255, 0.7);
+  box-shadow: 0 0 14px rgba(37, 199, 255, 0.2);
+  margin: 10px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: rotateOwnerImage 3s ease-out forwards;
+  animation-delay: calc(var(--card-delay, 0s) + 1s);
+}
+
+.animated-team-info h2 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #7bf1ff;
+  text-shadow: 0 0 10px rgba(123, 241, 255, 0.35);
+  opacity: 0;
+  animation: fadeInText 3s ease-out forwards;
+  animation-delay: calc(var(--card-delay, 0s) + 1s);
+}
+
+.animated-owner-name {
+  margin: 5px 0;
+  font-weight: bold;
+  color: #a3f7ff;
+  opacity: 0;
+  animation: fadeInText 3s ease-out forwards;
+  animation-delay: calc(var(--card-delay, 0s) + 1s);
+}
+
+.animated-total-points {
+  margin: 5px 0;
+  color: #8ce0ff;
+  opacity: 0;
+  animation: totalpoints 3s ease-out forwards;
+  animation-delay: calc(var(--card-delay, 0s) + 1s);
+}
+
+/* Keyframe animations */
+@keyframes cardEntry {
+  0% {
+    opacity: 0;
+    left: -120vw;
+    top: 50%;
+    width: 280px;
+    height: 260px;
+    transform: translateY(-50%) scale(0.3);
+  }
+  10% {
+    opacity: 0.8;
+    left: 8vw;
+    top: 50%;
+    width: 320px;
+    height: 30vh;
+    transform: translateY(-50%) scale(0.45);
+  }
+  20% {
+    opacity: 1;
+    left: 10vw;
+    top: 50%;
+    width: 80vw;
+    height: 80vh;
+    transform: translateY(-50%) scale(1);
+  }
+  80% {
+    opacity: 1;
+    left: 10vw;
+    top: 50%;
+    width: 80vw;
+    height: 80vh;
+    transform: translateY(-50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+    left: calc((var(--col) * (100% - ((var(--cols) - 1) * var(--gap)))) / var(--cols) + (var(--col) * var(--gap)));
+    top: calc((var(--row) * (100% - ((var(--rows) - 1) * var(--gap)))) / var(--rows) + (var(--row) * var(--gap)));
+    width: calc((100% - ((var(--cols) - 1) * var(--gap))) / var(--cols));
+    height: calc((100% - ((var(--rows) - 1) * var(--gap))) / var(--rows));
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    left: calc((var(--col) * (100% - ((var(--cols) - 1) * var(--gap)))) / var(--cols) + (var(--col) * var(--gap)));
+    top: calc((var(--row) * (100% - ((var(--rows) - 1) * var(--gap)))) / var(--rows) + (var(--row) * var(--gap)));
+    width: calc((100% - ((var(--cols) - 1) * var(--gap))) / var(--cols));
+    height: calc((100% - ((var(--rows) - 1) * var(--gap))) / var(--rows));
+    transform: scale(1);
+  }
+}
+
+@keyframes showLogo {
+  0% {
+    opacity: 0;
+    transform: translateX(550px) translateY(-130px) scale(1.5);
+  }
+  95% {
+    opacity: 1;
+    transform: translateX(550px) translateY(-130px) scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0px) translateY(0) scale(1);
+  }
+}
+
+@keyframes rotateOwnerImage {
+  0% {
+    opacity: 0;
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(5);
+  }
+  30% {
+    opacity: 1;
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 90deg) scale(5);
+  } 
+  95% {
+    opacity: 1;
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(5);
+  }  
+  100% {
+    opacity: 1;
+    transform: translateX(0px) translateY(0px) rotate3d(0, 1, 0, 0deg) scale(1);
+  }  
+}
+
+@keyframes totalpoints {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(2);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(20px) scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes fadeInText {
+  0% {
+    opacity: 0;
+    transform: translateY(-280px) scale(2);
+  }
+  95% {
+    opacity: 1;
+    transform: translateY(-280px) scale(2);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 20px rgba(255, 215, 0, 0.4);
+  }
+  100% {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 0 0 0 rgba(255, 215, 0, 0.7);
+  }
+}

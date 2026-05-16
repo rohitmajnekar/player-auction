@@ -2,6 +2,8 @@
   [
     {
       "name": "AGRI TITANS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "33.jpg",
       "logo": "1.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -11,57 +13,55 @@
     },
     {
       "name": "AGRI CHALLENGERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "2.jpg",
+      "totalPoints": 10000000,
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
+      "key": 2
+    },
+    {
+      "name": "AGRI CHARGERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
+      "logo": "3.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 300000,
       "balancePoints": 9700000,
       "players": [
         {
           "Name": "DURVESH JOSHI",
+          "owner": "AGRI TITANS",
+          "ownerImage": "1.jpg",
           "Photo": "Durvesh Joshi",
           "Style": "All Rounder",
           "Category": "A",
           "Price": 300000,
           "sold": true,
-          "team_name": "AGRI CHALLENGERS",
-          "team_logo": "2.jpg",
+          "team_name": "AGRI CHARGERS",
+          "team_logo": "3.jpg",
           "sale_price": 300000
         }
       ],
-      "key": 2
-    },
-    {
-      "name": "AGRI CHARGERS",
-      "logo": "3.jpg",
-      "totalPoints": 10000000,
-      "pointsUsed": 0,
-      "balancePoints": 10000000,
-      "players": [],
       "key": 3
     },
     {
       "name": "AGRI WARRIORS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "4.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 300000,
-      "balancePoints": 9700000,
-      "players": [
-        {
-          "Name": "YASH MANDLEKAR",
-          "Photo": "Yash Mandlekar",
-          "Style": "All Rounder",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI WARRIORS",
-          "team_logo": "4.jpg",
-          "sale_price": 300000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 4
     },
     {
       "name": "AGRI SPARTANS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "5.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -71,6 +71,8 @@
     },
     {
       "name": "AGRI STARTS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "6.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -80,6 +82,8 @@
     },
     {
       "name": "AGRI STRIKERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "7.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -89,6 +93,8 @@
     },
     {
       "name": "AGRI ROYALS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "8.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -98,6 +104,8 @@
     },
     {
       "name": "AGRI THUNDER",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "9.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -107,27 +115,19 @@
     },
     {
       "name": "AGRI BLASTERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "10.jpg",
       "totalPoints": 10000000,
-      "pointsUsed": 500000,
-      "balancePoints": 9500000,
-      "players": [
-        {
-          "Name": "VIRAJ MORE",
-          "Photo": "Viraj More",
-          "Style": "All Rounder",
-          "Category": "A",
-          "Price": 300000,
-          "sold": true,
-          "team_name": "AGRI BLASTERS",
-          "team_logo": "10.jpg",
-          "sale_price": 500000
-        }
-      ],
+      "pointsUsed": 0,
+      "balancePoints": 10000000,
+      "players": [],
       "key": 10
     },
     {
       "name": "AGRI DEVILS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "11.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -137,6 +137,8 @@
     },
     {
       "name": "AGRI KINGS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "12.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -146,6 +148,8 @@
     },
     {
       "name": "AGRI FIGHTERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "13.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,
@@ -155,6 +159,8 @@
     },
     {
       "name": "AGRI RIDERS",
+      "owner": "AGRI TITANS",
+      "ownerImage": "1.jpg",
       "logo": "14.jpg",
       "totalPoints": 10000000,
       "pointsUsed": 0,

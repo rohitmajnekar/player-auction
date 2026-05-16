@@ -7,7 +7,7 @@
   let teamData = [];
 
   onMount(() => {
-    socket = io("http://192.168.31.79:5000");
+    socket = io("http://192.168.0.111:5000");
 
     socket.on("connect", () => {
       console.log("🟢 Connected:", socket.id);
@@ -22,9 +22,10 @@
       socket.disconnect();
     };
   });
+  
 </script>
 
-<h1>📋 Live Team Details</h1>
+<h1>📋 Live Team Detail</h1>
 
 {#if teamData.length === 0}
   <p>No team data received yet.</p>

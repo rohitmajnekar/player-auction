@@ -129,12 +129,12 @@
     },
     // Add more teams as needed
   ];
-    const socket = io("http://192.168.31.6:5000");
+    const socket = io("http://192.168.0.111:5000");
 
   let selectedTeams = [];
 
   function handleSubmit() {
-    // You can process selectedTeams here
+    socket.emit('selectedTeams', selectedTeams);
     console.log('Selected teams:', selectedTeams);
   }
 </script>
@@ -143,14 +143,16 @@
 
 <!-- Option 1: Checkboxes -->
 {#each teams as team}
-  <label>
-    <input
-      type="checkbox"
-      bind:group={selectedTeams}
-      value={team.name}
-    />
-    {team.name}
-  </label><br />
+  <div style="display: flex; flex-direction: column; margin-bottom: 10px;">
+    <label style="display: flex; align-items: center; ">
+      <input
+        type="checkbox"
+        bind:group={selectedTeams}
+        value={team.name}
+      />
+      {team.name}
+    </label>
+  </div>
 {/each}
 
 <!-- Submit Button -->

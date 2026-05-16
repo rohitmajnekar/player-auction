@@ -10,4 +10,7 @@ start "Svelte Client" cmd /k "cd /d %~dp0remote-connection-app/exposer && npm in
 REM Step 3: Start root project (assumed current folder)
 start "Root Project" cmd /k "cd /d %~dp0 && npm install && npm start"
 
+REM Step 4: Start SQL server
+start "SQL Server" cmd /k "cd /d %~dp0sql_server && npm install && npm start"
+
 endlocal

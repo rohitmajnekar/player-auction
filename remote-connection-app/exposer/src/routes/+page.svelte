@@ -1,39 +1,45 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import io from 'socket.io-client';
-    let socket;
+    import { socket } from '$lib/socket';
 
     let teams = [];
     let selectedTeamKey = null;
-
-    socket = io("http://192.168.31.6:5000");
+    const API_BASE = 'http://localhost:5001'
+    async function getPlayerData() {
+        const response = await fetch(`${API_BASE}/api/auction-state`);
+        const data = await response.json();
+        // console.log('Player Data:', data);
+        return data;
+        }
+    const player = getPlayerData()
 
     const toggleTeam = (key) => {
         selectedTeamKey = selectedTeamKey === key ? null : key;
     };
     
-    function getSavedTeamData() {
-        return new Promise((resolve) => {
-            socket.emit("savedteamdata", (response) => {
-                resolve(response.data);
-            });
-        });
-    }
-      onMount(async () => {
-        try {
-            teams = await getSavedTeamData();
-            console.log("Teams loaded:", teams);
-            teams = teams[0]
-        } catch (err) {
-            console.error("Failed to load team data:", err);
-        }
-    });
+    // function getSavedTeamData() {
+    //     return new Promise((resolve) => {
+    //         socket.emit("savedteamdata", (response) => {
+    //             resolve(response.data);
+    //         });
+    //     });
+    // }
+    //   onMount(async () => {
+    //     try {
+    //         teams = await getSavedTeamData();
+    //         console.log("Teams loaded:", teams);
+    //         teams = teams[0]
+    //     } catch (err) {
+    //         console.error("Failed to load team data:", err);
+    //     }
+    // });
 
     onMount(() => {
 
         socket.on('teamdata', (data) => {
-        console.log('Received data:', data);
-        teams = data;
+            console.log('Received data:', data);
+            teams = data;
         });
 
         // Clean up on unmount

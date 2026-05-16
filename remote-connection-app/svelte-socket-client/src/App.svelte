@@ -7,6 +7,8 @@ import { Router, Route, Link } from "svelte-routing";
 
 </script>
 
+
+
 <Router>
   <nav>
     <Link to="/">Home</Link>

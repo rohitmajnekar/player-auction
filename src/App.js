@@ -5,16 +5,16 @@ import PlayerNavBar from './PlayerNavBar';
 import { useEffect, useRef, useState,useCallback, useContext } from 'react';
 import UnsoldPlayersView from './UnsoldPlayersView';
 import PriceModifier from './priceModifier';
-import { saveDataToLocalStorage } from './helper';
-import Papa  from 'papaparse';
-import { getDataFromLocalStorage } from './helper';
+import { loadAppState, initializeAppState, saveAppState, parseCSV } from './helper';
 import SoldPlayersView from './SoldPlayerView';
 import TeamView from './TeamView';
+import AnimatedTeamsView from './AnimatedTeamsView';
 import logo from "./logo.svg"
-import {io} from 'socket.io-client'
 import Confetti from 'react-confetti'; // Import Confetti component
 import { SocketContext } from "./SocketContext";
 import LogoPopup from './LogoPopup';
+import Spinner from './Spinner';
+
 
 const NavBar = () => {
   return (
@@ -27,200 +27,257 @@ const NavBar = () => {
   );
 };
 
+const defaultTeamsData = [
+  {
+    name: "AGRI TITANS",
+    logo: "1.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 1,
+    owner: "Owner 1",
+    ownerImage: "33.jpg",
+  },
+  {
+    name: "AGRI CHALLENGERS",
+    logo: "2.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 2,
+    owner: "Owner 2",
+    ownerImage: "2.jpg",
+  },
+  {
+    name: "AGRI CHARGERS",
+    logo: "3.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    owner: "Owner 3",
+    ownerImage: "3.jpg",
+    players: [],
+    key: 3,
+  },
+  {
+    name: "AGRI WARRIORS",
+    logo: "4.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    owner: "Owner 4",
+    ownerImage: "owner4.jpg",
+    players: [],
+    key: 4,
+  },
+  {
+    name: "AGRI SPARTANS",
+    logo: "5.jpg",
+    totalPoints: 10000000,
+    owner: "Owner 5",
+    ownerImage: "owner5.jpg",
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 5,
+  },
+  {
+    name: "AGRI STARTS",
+    owner: "Owner 6",
+    ownerImage: "owner6.jpg",
+    logo: "6.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 6,
+  },
+  {
+    name: "AGRI STRIKERS",
+    owner: "Owner 7",
+    ownerImage: "owner7.jpg",
+    logo: "7.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 7,
+  },
+  {
+    name: "AGRI ROYALS",
+    owner: "Owner 8",
+    ownerImage: "owner8.jpg",
+    logo: "8.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 8,
+  },
+  {
+    name: "AGRI THUNDER",
+    owner: "Owner 9",
+    ownerImage: "owner9.jpg",
+    logo: "9.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 9,
+  },
+  {
+    name: "AGRI BLASTERS",
+    logo: "10.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    owner: "Owner 10",
+    ownerImage: "owner10.jpg",
+    balancePoints: 10000000,
+    players: [],
+    key: 10,
+  },
+  {
+    name: "AGRI DEVILS",
+    owner: "Owner 11",
+    ownerImage: "owner11.jpg",
+    logo: "11.jpg",
+    owner: "Owner 12",
+    ownerImage: "owner12.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 11,
+  },
+  {
+    name: "AGRI KINGS",
+    logo: "12.jpg",
+    owner: "Owner 13",
+    ownerImage: "owner13.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 12,
+  },
+  {
+    owner: "Owner 14",
+    ownerImage: "owner14.jpg",
+    name: "AGRI FIGHTERS",
+    logo: "13.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 13,
+  },
+  {
+    name: "AGRI RIDERS",
+    logo: "14.jpg",
+    totalPoints: 10000000,
+    pointsUsed: 0,
+    balancePoints: 10000000,
+    players: [],
+    key: 14,
+  },
+];
 
 function App() {
-  const [all_players, set_all_players] = useState([])
-  const [current_player, set_current_player] = useState({})
-  const [unsold_players, set_unsold_player] = useState([])
-  const [sold_players, set_sold_player] = useState([])
-  const [teamsData, setTeamsData] = useState([
-      {
-        name: "AGRI TITANS",
-        logo: "1.jpg",
-        totalPoints: 10000000,
-        pointsUsed: 0,
-        balancePoints: 10000000,
-        players: [],
-        key: 1
-      },
-    {
-      name: "AGRI CHALLENGERS",
-      logo: "2.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 2
-    },
-    {
-      name: "AGRI CHARGERS",
-      logo: "3.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 3
-    },
-    {
-      name: "AGRI WARRIORS",
-      logo: "4.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 4
-    },
-    {
-      name: "AGRI SPARTANS",
-      logo: "5.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 5
-    },
-    {
-      name: "AGRI STARTS",
-      logo: "6.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 6
-    },
-    {
-      name: "AGRI STRIKERS",
-      logo: "7.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 7
-    },
-    {
-      name: "AGRI ROYALS",
-      logo: "8.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 8
-    },
-    {
-      name: "AGRI THUNDER",
-      logo: "9.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 9
-    },
-    {
-      name: "AGRI BLASTERS",
-      logo: "10.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 10
-    },
-    {
-      name: "AGRI DEVILS",
-      logo: "11.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 11
-    },
-    {
-      name: "AGRI KINGS",
-      logo: "12.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 12
-    },
-    {
-      name: "AGRI FIGHTERS",
-      logo: "13.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 13
-    },
-    {
-      name: "AGRI RIDERS",
-      logo: "14.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 14
-    },
-    // Add more teams as needed
-  ]);
-  const playerCardRef = useRef(null)
-  const [isEnterPressed, set_enter_pressed] = useState(false)
-  const [keyCollected, set_keyCollected] = useState("")
+  const [all_players, set_all_players] = useState([]);
+  const [current_player, set_current_player] = useState({});
+  const [unsold_players, set_unsold_player] = useState([]);
+  const [sold_players, set_sold_player] = useState([]);
+  const [teamsData, setTeamsData] = useState(defaultTeamsData);
+  const [loading, setLoading] = useState(true);
+  const playerCardRef = useRef(null);
+  const [isEnterPressed, set_enter_pressed] = useState(false);
+  const [keyCollected, set_keyCollected] = useState("");
   const allPlayersRef = useRef(all_players);
   const soldPlayersRef = useRef(all_players);
   const currentPlayersRef = useRef(all_players);
   const socket = useContext(SocketContext);
-  const [currrent_category, set_currrent_category] = useState('A')
+  const [currrent_category, set_currrent_category] = useState('A');
   const [showPopup, setShowPopup] = useState(false);
+  const stateSaveRef = useRef(false);
+  const [showSpinner, setShowSpinner] = useState(false);
+  const [spinTheWheel, setSpinTheWheel] = useState(false);
+  
+  const loadPlayersFromCSV = async () => {
+    const response = await fetch('./players.csv');
+    const responseText = await response.text();
+    const data = await parseCSV(responseText);
+    return data.map(row => ({
+      Timestamp: row.Timestamp,
+      Username: row.Username,
+      Name: row['Name'] ? row['Name'].toUpperCase() : row['Name'],
+      Photo: row['Common Code'],
+      Style: row['Player Style'],
+      Category: row['Category'],
+      Price: row['Category'] === 'A' ? 300000 : row['Category'] === 'B' ? 200000 : 100000,
+      sold: false,
+    }));
+  };
 
   
   useEffect(() => {
-    const load = async ()=>{
-      await fetch( './players.csv' )
-      .then( response => response.text() )
-      .then( responseText => {
-        // -- parse csv
-        var data = Papa.parse(responseText,{header:true, quoteChar:'"'});
-        const players = data.data.map(row => ({
-          Timestamp: row.Timestamp,
-          Username: row.Username,
-          Name: row['Name']?row['Name'].toUpperCase():row['Name'],
-          // Age: row['Age'],
-          // Contact: row['खेळाडूचे  कॉन्टॅक्ट / Player Contact'],
-          Photo: row['Common Code'],
-          Style: row['Player Style'],
-          // CommonCode: row['टीशर्ट साईझ / Tshirt Size'],
-          Category: row['Category'],
-          Price: row['Category'] === 'A'? 300000:row['Category'] === 'B'?200000:100000,
-          sold:false
-        }));
-        
-        set_all_players(players)
-        console.log('data:', players);
-        const sold_players_loc = getDataFromLocalStorage("soldPlayers")
-        const teamsData_loc = getDataFromLocalStorage("teamsData")
-        
-        if (sold_players_loc === null){
-          var unsold_players = players
-          console.log(all_players)
-        }else{
-          unsold_players = players.filter(player => !sold_players_loc.some(s_player => s_player.Photo === player.Photo))
-          set_sold_player(sold_players_loc)
-          setTeamsData(teamsData_loc)
-        }
-        console.log('debug', unsold_players)
-        set_current_player(unsold_players.at(0))
-        set_unsold_player(unsold_players)
-        setPrice(unsold_players.at(0).Price)
-        console.log(unsold_players)
-      })
-    };
-    load()
-    if (playerCardRef.current) {
-      playerCardRef.current.focus();
-    }
+    const loadState = async () => {
+      try {
+        const savedState = await loadAppState();
 
-    
-  }, [])
+        if (savedState?.initialized && Array.isArray(savedState.all_players)) {
+          const players = savedState.all_players;
+          const savedSoldPlayers = Array.isArray(savedState.soldPlayers) ? savedState.soldPlayers : [];
+          const savedTeams = Array.isArray(savedState.teamsData) ? savedState.teamsData : defaultTeamsData;
+
+          set_all_players(players);
+          set_sold_player(savedSoldPlayers);
+          setTeamsData(savedTeams);
+
+          const unsold_players = players.filter(
+            (player) => !savedSoldPlayers.some((s_player) => s_player.Photo === player.Photo)
+          );
+
+          set_current_player(unsold_players[0] || {});
+          set_unsold_player(unsold_players);
+          setPrice(unsold_players[0]?.Price || 100000);
+        } else {
+          const initializedState = await initializeAppState({ loadFromServer: true });
+          const players = Array.isArray(initializedState.all_players) ? initializedState.all_players : [];
+          const savedSoldPlayers = Array.isArray(initializedState.soldPlayers) ? initializedState.soldPlayers : [];
+          const savedTeams = Array.isArray(initializedState.teamsData) ? initializedState.teamsData : defaultTeamsData;
+
+          set_all_players(players);
+          set_sold_player(savedSoldPlayers);
+          setTeamsData(savedTeams);
+
+          const unsold_players = players.filter(
+            (player) => !savedSoldPlayers.some((s_player) => s_player.Photo === player.Photo)
+          );
+
+          set_current_player(unsold_players[0] || {});
+          set_unsold_player(unsold_players);
+          setPrice(unsold_players[0]?.Price || 100000);
+        }
+      } catch (error) {
+        console.error('Unable to load saved state:', error);
+        // const players = await loadPlayersFromCSV();
+        // const unsold_players = players;
+
+        // set_all_players(players);
+        // set_unsold_player(unsold_players);
+        // set_current_player(unsold_players[0] || {});
+        // setPrice(unsold_players[0]?.Price || 100000);
+      } finally {
+        if (playerCardRef.current) {
+          playerCardRef.current.focus();
+        }
+      }
+    };
+
+    loadState();
+  }, []);
 
 //   const handleBid = (player) => {
 //     const socket = io('http://localhost:8080');
@@ -229,9 +286,24 @@ function App() {
 
   useEffect(() => {
     allPlayersRef.current = all_players;
-    soldPlayersRef.current = sold_players
-    currentPlayersRef.current = current_player
+    soldPlayersRef.current = sold_players;
+    currentPlayersRef.current = current_player;
   }, [all_players, sold_players, current_player]);
+
+  useEffect(() => {
+    if (!stateSaveRef.current) {
+      stateSaveRef.current = true;
+      return;
+    }
+
+    saveAppState({
+      soldPlayers: sold_players,
+      teamsData,
+      all_players,
+    }).catch((error) => {
+      console.error('Failed to persist app state:', error);
+    });
+  }, [sold_players, teamsData, all_players]);
 
   function get_current_index(){
     const unsold_with_current = all_players.filter(
@@ -261,12 +333,11 @@ function App() {
       const nextPlayer = re_calc_unsold[nextIndex] || re_calc_unsold[0];
       setPrice(nextPlayer.Price)
       set_current_player(nextPlayer);
-      saveDataToLocalStorage("soldPlayers", sold_players)
-      saveDataToLocalStorage("teamsData",teamsData)
     }
   },[sold_players])
   
   const [activeView, setActiveView] = useState('sold'); // Initial active view state
+  const [screenSaverMode, setScreenSaverMode] = useState(false); // Screen saver toggle
   
   const handleViewChange = (view) => {
     setActiveView(view);
@@ -286,6 +357,21 @@ function App() {
           };
         }
         return oldTeam;
+      });
+    });
+    set_all_players((oldPlayers) => {
+      return oldPlayers.map((existingPlayer) => {
+        if (existingPlayer.Photo === player.Photo) {
+          return {
+            ...existingPlayer,
+            sold: false,
+            team_id: null,
+            team_name: null,
+            team_logo: null,
+            sale_price: null,
+          };
+        }
+        return existingPlayer;
       });
     });
     sold_players.at(sold_player_index).sold = false
@@ -377,11 +463,15 @@ function App() {
       case 'unsold':
         return <UnsoldPlayersView players={unsold_players} set_current_player={set_current_player}/>;
       case 'teams':
-        return <div style={{display: 'flex', flexWrap: 'wrap', width: '100%', paddingTop: '10px'}}>
-          {teamsData.map((team, index) => (
-                <TeamView key={index} team={team} />
-              ))}
-        </div>
+        if (screenSaverMode) {
+          return <AnimatedTeamsView teamsData={teamsData} />;
+        } else {
+          return <div style={{display: 'flex', flexWrap: 'wrap', width: '100%', paddingTop: '10px'}}>
+            {teamsData.map((team, index) => (
+                  <TeamView key={index} team={team} />
+                ))}
+          </div>;
+        }
       default:
         return null;
     }
@@ -430,10 +520,13 @@ function App() {
 
         <LogoPopup show={showPopup} onClose={() => setShowPopup(false)} />
       </div> */}
+      {/* {screenSaverMode && <AnimatedTeamsView teamsData={teamsData} />} */}
       <div className="player-card-container">
         <PlayerCard 
         player={current_player} 
         teams={teamsData} 
+        set_current_player={set_current_player}
+        set_all_players={set_all_players}
         set_sold_player={set_sold_player}
         setTeamsData={setTeamsData}
         sale_price={price}
@@ -444,6 +537,8 @@ function App() {
         handleAdd5000={handleAdd5000}
         handleAdd10000={handleAdd10000}
         set_currrent_category={set_currrent_category}
+        setShowSpinner={setShowSpinner}
+        setSpinTheWheel={setSpinTheWheel}
         />
       </div>
         <PriceModifier
@@ -451,9 +546,17 @@ function App() {
           onAdd5000={handleAdd5000}
           onAdd10000={handleAdd10000}
         />
-        <PlayerNavBar activeView={activeView} onViewChange={handleViewChange} />
+        <PlayerNavBar activeView={activeView} onViewChange={handleViewChange} screenSaverMode={screenSaverMode} setScreenSaverMode={setScreenSaverMode} />
         {renderView()}
-      </div>
+        {showSpinner && (
+          <Spinner
+            size={420}
+            onClose={() => setShowSpinner(false)}
+            onResult={(result) => console.log(result)}
+            spinTheWheel={spinTheWheel}
+          />
+        )}      
+        </div>
   );
 }
 

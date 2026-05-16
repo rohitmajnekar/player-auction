@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "com.chrome.devtools",
+      "name": "Chrome DevTools",
+      "type": "webapp",
+      "url": "/"
+    }
+  ],
+  "allowed_origins": ["*"]
+}

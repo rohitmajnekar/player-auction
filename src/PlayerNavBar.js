@@ -1,7 +1,7 @@
 import React from 'react';
 import './PlayerNavBar.css'; // Import CSS for styling
 
-const PlayerNavBar = ({ activeView, onViewChange }) => {
+const PlayerNavBar = ({ activeView, onViewChange, screenSaverMode, setScreenSaverMode }) => {
   return (
     <div className="player-nav-bar">
       <button
@@ -21,6 +21,12 @@ const PlayerNavBar = ({ activeView, onViewChange }) => {
         onClick={() => onViewChange('teams')}
       >
         Teams
+      </button>
+      <button
+        className={screenSaverMode ? 'active' : ''}
+        onClick={() => setScreenSaverMode(!screenSaverMode)}
+      >
+        Screen Saver: {screenSaverMode ? 'ON' : 'OFF'}
       </button>
     </div>
   );
