@@ -5,7 +5,15 @@ import Confetti from 'react-confetti'; // Import Confetti component
 import { useImperativeHandle } from 'react';
 import {io} from 'socket.io-client'
 import { sellPlayer } from './helper';
+import PriceCard from './PriceCard';
 
+
+const DetailCard = ({ label, value }) => (
+  <div className="detail-card">
+    <span className="detail-label">{label}</span>
+    <span className="detail-value">{value}</span>
+  </div>
+);
 
 const PlayerCard = forwardRef((props, ref) => {
   const { player, teams, set_current_player, set_all_players, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category, setShowSpinner, setSpinTheWheel } = props
@@ -152,14 +160,38 @@ const PlayerCard = forwardRef((props, ref) => {
        </div>
         
         <div className="player-info">
-          <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
+          {/* <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
           <p>Player Style: {player.Style}</p>
           <p>Player Category: {player.Category}</p>
           <p>Base Price: {player.Price}</p>
-          <h1 className='bidding-price'> Price: {sale_price/100000}L</h1>
+          <h1 className='bidding-price'> Price: {sale_price/100000}L</h1> */}
+          <div className="player-details">
+            <h1>{player.Name}</h1>
+
+            <DetailCard
+              label="PLAYER STYLE"
+              value={player.Style}
+            />
+
+            <DetailCard
+              label="CATEGORY"
+              value={player.Category}
+            />
+
+            <DetailCard
+              label="BASE PRICE"
+              value={player.Price}
+            />
+          </div>
+          <PriceCard price={sale_price/100000}L />
           {/* Add more relevant information */}
         </div>
-        <div className="player-photo">
+        {/* <div className="player-photo">
+          <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
+        </div> */}
+        <div className="player-image-wrapper">
+          <div className="image-glow" />
+
           <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
         </div>
         {player.sold?(

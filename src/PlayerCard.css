@@ -1,7 +1,7 @@
 .player-card {
     display: flex;
     border: 2px solid #0056b3;
-    background-image: url("./player-card-bg.png");
+    /* background-image: url("./player-card-bg.png"); */
     background-size: cover;
     color: white;
     border-radius: 8px;
@@ -13,6 +13,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add elevation effect */
     width: 100vw;
     height: 100vh;
+    z-index: 0;
   }
   .soldPlayer{
     background-image: url("./sold-player-card-bg.png");
@@ -33,7 +34,78 @@
       transform: translateX(0);
     }
   }
-  
+  .player-details {
+  width: 500px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+
+  border-radius: 30px;
+
+  background: rgba(15, 23, 42, 0.7);
+
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  box-shadow:
+    0 0 30px rgba(59,130,246,0.2),
+    inset 0 0 30px rgba(255,255,255,0.03);
+}
+
+.player-details h1 {
+  color: white;
+  font-size: 52px;
+  margin-bottom: 30px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.detail-card {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 20px;
+
+  padding: 20px;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30,41,59,0.9),
+      rgba(15,23,42,0.8)
+    );
+
+  border: 1px solid rgba(59,130,246,0.4);
+
+  transition: 0.3s;
+}
+
+.detail-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 20px rgba(59,130,246,0.4);
+}
+
+.detail-label {
+  color: #94a3b8;
+  font-size: 14px;
+  letter-spacing: 2px;
+}
+
+.detail-value {
+  color: #67e8f9;
+
+  font-size: 32px;
+
+  font-weight: 700;
+
+  margin-top: 6px;
+}
   .player-photo {
 
     flex: 0 0 auto;
@@ -42,6 +114,7 @@
     top: 85px;
     margin-left: 10px;
     left: -120px;
+    
   }
   
   .player-photo img {
@@ -62,7 +135,8 @@
   
   .player-info {
     margin-left: 200px;
-    top: 20px;
+    display: flex;
+    top: 75px;
     position: relative;
     text-align: left;
     flex: 1 1 auto;
@@ -84,7 +158,7 @@
   
   .player-info h1 {
     margin-top: 50px;
-    font-size: 100px;
+    /* font-size: 100px; */
   }
   
   .player-info p {
@@ -229,3 +303,52 @@
     font-style: italic;
     position: absolute;
   }
+
+
+  .player-image-wrapper {
+    top:90px;
+  position: relative;
+
+  width: 500px;
+  height: 650px;
+
+  border-radius: 30px;
+
+  overflow: hidden;
+
+  border: 2px solid rgba(255,255,255,0.2);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(37,99,235,0.2),
+      rgba(147,51,234,0.2)
+    );
+
+  box-shadow:
+    0 0 40px rgba(59,130,246,0.3);
+}
+
+.player-image-wrapper img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.image-glow {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(255,255,255,0.3),
+      transparent 40%
+    );
+
+  z-index: 2;
+
+  pointer-events: none;
+}

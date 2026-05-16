@@ -15,6 +15,7 @@ import { SocketContext } from "./SocketContext";
 import LogoPopup from './LogoPopup';
 import Spinner from './Spinner';
 
+import FluidBackground from "./FluidBackground";
 
 const NavBar = () => {
   return (
@@ -509,7 +510,8 @@ function App() {
   };
   return (
     <div className="App" onKeyDown={handleKeyPress} ref={playerCardRef} tabIndex={0}>
-      <NavBar/>
+      {/* <NavBar/> */}
+      {/* <FluidBackground /> */}
       {/* <div className="p-10">
         <button
           onClick={() => setShowPopup(true)}
@@ -521,42 +523,45 @@ function App() {
         <LogoPopup show={showPopup} onClose={() => setShowPopup(false)} />
       </div> */}
       {/* {screenSaverMode && <AnimatedTeamsView teamsData={teamsData} />} */}
-      <div className="player-card-container">
-        <PlayerCard 
-        player={current_player} 
-        teams={teamsData} 
-        set_current_player={set_current_player}
-        set_all_players={set_all_players}
-        set_sold_player={set_sold_player}
-        setTeamsData={setTeamsData}
-        sale_price={price}
-        isEnterPressed={isEnterPressed}
-        ref={childRef}
-        set_next_player={set_next_player}
-        set_previous_player={set_previous_player}
-        handleAdd5000={handleAdd5000}
-        handleAdd10000={handleAdd10000}
-        set_currrent_category={set_currrent_category}
-        setShowSpinner={setShowSpinner}
-        setSpinTheWheel={setSpinTheWheel}
-        />
-      </div>
-        <PriceModifier
-          price={price}
-          onAdd5000={handleAdd5000}
-          onAdd10000={handleAdd10000}
-        />
-        <PlayerNavBar activeView={activeView} onViewChange={handleViewChange} screenSaverMode={screenSaverMode} setScreenSaverMode={setScreenSaverMode} />
-        {renderView()}
-        {showSpinner && (
-          <Spinner
-            size={420}
-            onClose={() => setShowSpinner(false)}
-            onResult={(result) => console.log(result)}
-            spinTheWheel={spinTheWheel}
+      <div className='app-ui'>
+
+        <div className="player-card-container">
+          <PlayerCard 
+          player={current_player} 
+          teams={teamsData} 
+          set_current_player={set_current_player}
+          set_all_players={set_all_players}
+          set_sold_player={set_sold_player}
+          setTeamsData={setTeamsData}
+          sale_price={price}
+          isEnterPressed={isEnterPressed}
+          ref={childRef}
+          set_next_player={set_next_player}
+          set_previous_player={set_previous_player}
+          handleAdd5000={handleAdd5000}
+          handleAdd10000={handleAdd10000}
+          set_currrent_category={set_currrent_category}
+          setShowSpinner={setShowSpinner}
+          setSpinTheWheel={setSpinTheWheel}
           />
-        )}      
         </div>
+          <PriceModifier
+            price={price}
+            onAdd5000={handleAdd5000}
+            onAdd10000={handleAdd10000}
+          />
+          <PlayerNavBar activeView={activeView} onViewChange={handleViewChange} screenSaverMode={screenSaverMode} setScreenSaverMode={setScreenSaverMode} />
+          {renderView()}
+          {showSpinner && (
+            <Spinner
+              size={420}
+              onClose={() => setShowSpinner(false)}
+              onResult={(result) => console.log(result)}
+              spinTheWheel={spinTheWheel}
+            />
+          )}      
+          </div>
+      </div>
   );
 }
 
