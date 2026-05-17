@@ -183,17 +183,17 @@ const PlayerCard = forwardRef((props, ref) => {
               value={player.Price}
             />
           </div>
-          <PriceCard price={sale_price/100000} />
+          <div className="player-image-wrapper">
+            <div className="image-glow" />
+
+            <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
+          </div>
           {/* Add more relevant information */}
         </div>
+        <PriceCard price={sale_price/100000} />
         {/* <div className="player-photo">
           <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
         </div> */}
-        <div className="player-image-wrapper">
-          <div className="image-glow" />
-
-          <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
-        </div>
         {player.sold?(
           <div>
             <div className='sold-image'></div>

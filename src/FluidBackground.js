@@ -40,7 +40,7 @@ export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered })
             g: 3,
             b: 15
         },
-        TRANSPARENT: false,
+        TRANSPARENT: true,
         BLOOM: true,
         BLOOM_ITERATIONS: 8,
         BLOOM_RESOLUTION: 256,
@@ -1448,12 +1448,12 @@ export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered })
         }
 
         if (target == null && config.TRANSPARENT) {
-            backgroundProgram.bind();
-            gl.uniform1f(
-            backgroundProgram.uniforms.aspectRatio,
-            canvas.width / canvas.height
-            );
-            blit(null);
+            // backgroundProgram.bind();
+            // gl.uniform1f(
+            // backgroundProgram.uniforms.aspectRatio,
+            // canvas.width / canvas.height
+            // );
+            // blit(null);
         }
 
         if (config.SHADING) {
