@@ -16,7 +16,7 @@ const DetailCard = ({ label, value }) => (
 );
 
 const PlayerCard = forwardRef((props, ref) => {
-  const { player, teams, set_current_player, set_all_players, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category, setShowSpinner, setSpinTheWheel } = props
+  const { player, teams, set_current_player, set_all_players, set_sold_player, setTeamsData, sale_price, isEnterPressed, set_next_player,set_previous_player,handleAdd5000,handleAdd10000,set_currrent_category, setShowSpinner, setSpinTheWheel, setMaxBidTriggered } = props
   const [showTeams, setShowTeams] = useState(false);
   const [messages, setMessages] = useState([]);
   const [socket, setSocket] = useState(null);
@@ -183,7 +183,7 @@ const PlayerCard = forwardRef((props, ref) => {
               value={player.Price}
             />
           </div>
-          <PriceCard price={sale_price/100000}L />
+          <PriceCard price={sale_price/100000} />
           {/* Add more relevant information */}
         </div>
         {/* <div className="player-photo">

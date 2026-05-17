@@ -35,7 +35,7 @@
     }
   }
   .player-details {
-  width: 500px;
+  width: 600px;
   height: 600px;
   display: flex;
   flex-direction: column;
@@ -134,7 +134,7 @@
   }
   
   .player-info {
-    margin-left: 200px;
+    margin-left: 80px;
     display: flex;
     top: 75px;
     position: relative;

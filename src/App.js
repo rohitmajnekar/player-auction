@@ -204,6 +204,7 @@ function App() {
   const stateSaveRef = useRef(false);
   const [showSpinner, setShowSpinner] = useState(false);
   const [spinTheWheel, setSpinTheWheel] = useState(false);
+  const [maxBidTriggered, setMaxBidTriggered] = useState(false);
   
   const loadPlayersFromCSV = async () => {
     const response = await fetch('./players.csv');
@@ -392,9 +393,16 @@ function App() {
     setPrice(prevPrice => prevPrice - 100000);
   };
 
-  const handleAdd10000 = () => {
-    setPrice(prevPrice => prevPrice + 100000);
-  };
+const handleAdd10000 = () => {
+  setPrice(prevPrice => {
+    const newPrice = prevPrice + 100000;
+    if (newPrice === 3000000) {
+      setMaxBidTriggered(true);
+    }
+
+    return newPrice;
+  });
+};
 
   function get_current_index_alt(){
     const unsold_with_current = all_players.filter(
@@ -511,7 +519,10 @@ function App() {
   return (
     <div className="App" onKeyDown={handleKeyPress} ref={playerCardRef} tabIndex={0}>
       {/* <NavBar/> */}
-      {/* <FluidBackground /> */}
+      <FluidBackground 
+        maxBidTriggered={maxBidTriggered}
+        setMaxBidTriggered={setMaxBidTriggered}
+      />
       {/* <div className="p-10">
         <button
           onClick={() => setShowPopup(true)}
@@ -543,6 +554,7 @@ function App() {
           set_currrent_category={set_currrent_category}
           setShowSpinner={setShowSpinner}
           setSpinTheWheel={setSpinTheWheel}
+          setMaxBidTriggered={setMaxBidTriggered}
           />
         </div>
           <PriceModifier

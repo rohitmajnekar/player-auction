@@ -1,12 +1,17 @@
+import { use } from "react";
 import { useEffect, useRef } from "react";
 // import "./FluidBackground.css";
 
-export default function FluidBackground() {
+export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered }) {
 
     const canvasRef = useRef(null);
 
+
     useEffect(() => {
 
+        if (!maxBidTriggered) {
+            return;
+        }
         const canvas = canvasRef.current;
 
         if (!canvas) return;
@@ -872,8 +877,8 @@ export default function FluidBackground() {
                 );
 
                 i++;
-
-                if (i > 10000) {
+                
+                if (i > 200) {
                     clearInterval(interval);
                 }
 
@@ -1754,8 +1759,9 @@ export default function FluidBackground() {
         color.b *= 10.0;
         shootStream(200, 900, 0, -1, color);
         shootStream(700, 900, 0, -1, color);
-
-    }, []);
+        shootStream(1200, 900, 0, -1, color);
+        setMaxBidTriggered(!maxBidTriggered);
+    }, [maxBidTriggered]);
 
     
 
@@ -1765,9 +1771,6 @@ export default function FluidBackground() {
                 ref={canvasRef}
                 className="fluid-canvas"
             />
-            <div className="splatterer">
-                <h2>Clickdfsdggggggggggggggggggggggggggggggggggggg me!</h2>
-            </div>
         </div>
     );
 }

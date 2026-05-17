@@ -25,5 +25,5 @@
 
 .player-details {
   text-align: left;
-  flex-grow: 1; /* Expand to fill remaining space */
+  /* flex-grow: 1;  */
 }

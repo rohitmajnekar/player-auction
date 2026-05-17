@@ -5,11 +5,11 @@ const PriceCard = ({ price }) => {
   return (
     <div className="price-card">
       <span className="price-title">
-        WINNING BID
+        Current Price
       </span>
 
       <span className="price-value">
-        {price}
+        {price}L
       </span>
     </div>
   );
