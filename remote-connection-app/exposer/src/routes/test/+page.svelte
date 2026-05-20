@@ -129,7 +129,7 @@
     },
     // Add more teams as needed
   ];
-    const socket = io("http://192.168.0.110:5000");
+    const socket = io("http://192.168.0.112:5000");
 
   let selectedTeams = [];
 

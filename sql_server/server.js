@@ -16,8 +16,8 @@ app.use(cors({
       'http://localhost:5173',
       'http://127.0.0.1:3000',
       'http://127.0.0.1:5173',
-      'http://192.168.0.110:3000',
-      'http://192.168.0.110:5173'
+      'http://192.168.0.112:3000',
+      'http://192.168.0.112:5173'
     ];
 
     // Allow requests with no origin (like mobile apps or curl requests)
@@ -43,8 +43,8 @@ const io = new Server(server, {
         'http://localhost:5173',
         'http://127.0.0.1:3000',
         'http://127.0.0.1:5173',
-        'http://192.168.0.110:3000',
-        'http://192.168.0.110:5173'
+        'http://192.168.0.112:3000',
+        'http://192.168.0.112:5173'
       ];
 
       // Allow requests with no origin (like mobile apps or curl requests)
@@ -312,6 +312,7 @@ const loadAppState = async () => {
   };
 };
 
+
 const initializeAppState = async ({ loadFromServer = false, all_players = [], teamsData = [] } = {}) => {
     console.log('Initializing application state with loadFromServer:', loadFromServer);
   if (loadFromServer) {
@@ -331,7 +332,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/hoobby', (req, res) => {
-  res.send('cricket');
+  res.send(toString(teamsData));
 });
 
 // HTTP REST endpoints for state management

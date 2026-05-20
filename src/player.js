@@ -8,10 +8,17 @@ import { sellPlayer } from './helper';
 import PriceCard from './PriceCard';
 
 
-const DetailCard = ({ label, value }) => (
+const DetailCard = ({ icon, label, value }) => (
+  
   <div className="detail-card">
-    <span className="detail-label">{label}</span>
-    <span className="detail-value">{value}</span>
+    <img style={{width:60, height:60}} src={icon} alt={`${label} icon`} className="detail-icon" />
+    <div style={{display:'flex', flexDirection: 'column'}}> 
+      <span className="detail-label">{label}</span>
+      <span className="detail-value">
+        {value}
+      </span>
+    </div>
+      
   </div>
 );
 
@@ -158,39 +165,46 @@ const PlayerCard = forwardRef((props, ref) => {
        <div className='card-title'>
          APL 2024 Auctions
        </div>
-        
-        <div className="player-info">
-          {/* <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
-          <p>Player Style: {player.Style}</p>
-          <p>Player Category: {player.Category}</p>
-          <p>Base Price: {player.Price}</p>
-          <h1 className='bidding-price'> Price: {sale_price/100000}L</h1> */}
-          <div className="player-details">
-            <h1>{player.Name}</h1>
+        <div className='auction-layout'>
+           <div className="cyber-lines" />
+          <div className='auction-frame'>
+            <div className="player-info top-section">
+              {/* <h1 style={{fontSize: 'xxx-large'}} >{player.Name}</h1>
+              <p>Player Style: {player.Style}</p>
+              <p>Player Category: {player.Category}</p>
+              <p>Base Price: {player.Price}</p>
+              <h1 className='bidding-price'> Price: {sale_price/100000}L</h1> */}
+              <div className="player-details panel left-panel">
+                <h1>{player.Name}</h1>
 
-            <DetailCard
-              label="PLAYER STYLE"
-              value={player.Style}
-            />
+                <DetailCard
+                  icon = {`./playerStyle.png`}
+                  label="PLAYER STYLE"
+                  value={player.Style}
+                />
 
-            <DetailCard
-              label="CATEGORY"
-              value={player.Category}
-            />
+                <DetailCard
+                  icon = {`./category.png`}
+                  label="CATEGORY"
+                  value={player.Category}
+                />
 
-            <DetailCard
-              label="BASE PRICE"
-              value={player.Price}
-            />
+                <DetailCard
+                  icon = {`./basePrice.png`}
+                  label="BASE PRICE"
+                  value={player.Price}
+                />
+              </div>
+              <div className="player-image-wrapper panel right-panel">
+                <div className="image-glow" />
+
+                <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
+              </div>
+              {/* Add more relevant information */}
+            </div>
+            <PriceCard price={sale_price} isSold={player.sold} />
           </div>
-          <div className="player-image-wrapper">
-            <div className="image-glow" />
-
-            <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
-          </div>
-          {/* Add more relevant information */}
         </div>
-        <PriceCard price={sale_price/100000} />
         {/* <div className="player-photo">
           <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
         </div> */}

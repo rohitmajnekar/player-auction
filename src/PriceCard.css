@@ -2,18 +2,17 @@
 
   .price-card {
   margin-left: 148px;
-  top: -53px;
-  width: 1322px;
+  top: -25px;
+  width: 85rem;
   height: 160px;
   padding: 30px;
-
   
   display: flex;
   flex-direction: column;
   align-items: center;
   
   border-radius: 30px;
-
+  border: 1px solid rgba(180, 80, 255, 0.6);
   background:
     linear-gradient(173deg, #18002f, #9812ff33);
   box-shadow:
@@ -51,7 +50,7 @@
 }
 
 .price-title {
-  color: rgba(0,0,0,0.7);
+  color: rgba(255, 255, 255, 0.7);
 
   font-size: 18px;
 

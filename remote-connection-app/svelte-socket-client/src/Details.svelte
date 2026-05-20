@@ -7,7 +7,7 @@
   let teamData = [];
 
   onMount(() => {
-    socket = io("http://192.168.0.110:5000");
+    socket = io("http://192.168.0.112:5000");
 
     socket.on("connect", () => {
       console.log("🟢 Connected:", socket.id);

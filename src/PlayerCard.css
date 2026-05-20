@@ -66,8 +66,8 @@
   width: 425px;
 
   display: flex;
-  flex-direction: column;
-
+  flex-direction: row;
+  gap: 20px;
   margin-bottom: 20px;
 
   padding: 20px;
@@ -132,13 +132,13 @@
   }
   
   .player-info {
-    margin-left: 130px;
-    justify-content: space-between;
-    display: flex;
-    top: 75px;
+    margin-left: 170px;
+    /* justify-content: space-evenly; */
+    /* display: flex; */
+    /* top: 75px; */
     position: relative;
     text-align: left;
-    flex: 1 1 auto;
+    /* flex: 1 1 auto; */
     padding: 10px;
     opacity: 0;
     animation: slideInRight 0.5s ease forwards 0.3s;
@@ -167,7 +167,7 @@
   }
   
   .player-card {
-    flex-direction: column;
+    /* flex-direction: column; */
     position: relative; /* Positioning context for absolute positioning */
 
   }
@@ -232,6 +232,7 @@
     animation: soldAnimation 0.5s ease forwards 0.2s;
     transform: rotateZ(330deg); 
     opacity: 0;
+    z-index: 2;
   }
 
   @keyframes soldAnimation {
@@ -247,8 +248,8 @@
 
 
   .sold-information {
-    position: relative;
-    left: -40px;
+    position: absolute;
+    right:  40px;
   }
   
   /* CSS */
