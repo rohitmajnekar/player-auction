@@ -1,124 +1,97 @@
-Sr No.,Name,Player Style,Category,Common Code
-1,Durvesh Joshi,All Rounder,A,Durvesh Joshi
-2,Yash Mandlekar,All Rounder,A,Yash Mandlekar
-3,Viraj More,All Rounder,A,Viraj More
-4,Vinit Patil,All Rounder,A,Vinit Patil
-5,Tejas Gaikar,All Rounder,A,Tejas Gaikar
-6,Tejan Shedge,All Rounder,A,Tejan Shedge
-7,Sumeet Khot,All Rounder,A,Sumeet Khot
-8,Siddhesh Kudekar,All Rounder,A,Siddhesh Kudekar
-9,Shailesh Mhatre,All Rounder,A,Shailesh Mhatre
-10,Sagar More,All Rounder,A,Sagar More
-11,Nitu Goriwale,All Rounder,A,Nitu Goriwale
-12,Nishikant Mali,All Rounder,A,Nishikant Mali
-13,Kunal Mandlekar,All Rounder,A,Kunal Mandlekar
-14,Kiran Fulare,All Rounder,A,Kiran Fulare
-15,Aaradhya Gharat,Player,C1,Aaradhya Gharat
-16,Akshay Khot,Player,C1,Akshay Khot
-17,Akshay Patil,Player,C1,Akshay Patil
-18,Arun Mhatre,Player,C1,Arun Mhatre
-19,Aryan Shedge,Player,C1,Aryan Shedge
-20,Bhagesh,PLAYER,C1,Bhagesh
-21,Bhushan Patil,PLAYER,C1,Bhushan Patil
-22,Dnyaneshwar Ghanekar,PLAYER,C1,Dnyaneshwar Ghanekar
-23,Haresh Patil,PLAYER,C1,Haresh Patil
-24,Harshad Patil,PLAYER,C1,Harshad Patil
-25,Harshal Patil,PLAYER,C1,Harshal Patil
-26,Hemant Juikar,PLAYER,C1,Hemant Juikar
-27,Jayesh Majnekar,PLAYER,C1,Jayesh Majnekar
-28,Ketan Nakte,PLAYER,C1,Ketan Nakte
-29,Bhavesh Mandlekar,Batsmen,A,Bhavesh Mandlekar
-30,Chetan Patil,Batsmen,A,Chetan Patil
-31,Darshan Patil,Batsmen,A,Darshan Patil
-32,Dipesh Kamble,Batsmen,A,Dipesh Kamble
-33,Jaite Bhure,Batsmen,A,Jaite Bhure
-34,Kalpesh Gharat,Batsmen,A,Kalpesh Gharat
-35,Manthan Patil,Batsmen,A,Manthan Patil
-36,Sachin Mali,Batsmen,A,Sachin Mali
-37,Sagar Pardhi,Batsmen,A,Sagar Pardhi
-38,Siddhesh More,Batsmen,A,Siddhesh More
-39,Sidhesh Mohite,Batsmen,A,Sidhesh Mohite
-40,Sujit Misal,Batsmen,A,Sujit Misal
-41,Suyog Shedge,Batsmen,A,Suyog Shedge
-42,Swapnil Fulare,Batsmen,A,Swapnil Fulare
-43,Kishor Manjanekar,PLAYER,C2,Kishor Manjanekar
-44,Kishor Thakur,PLAYER,C2,Kishor Thakur
-45,Kittu,PLAYER,C2,Kittu
-46,Manohar Thakur,PLAYER,C2,Manohar Thakur
-47,Nayan Tambadkar,PLAYER,C2,Nayan Tambadkar
-48,Neelraj Shisatkar,PLAYER,C2,Neelraj Shisatkar
-49,Nilesh Pavshe,PLAYER,C2,Nilesh Pavshe
-50,Niraj Mhatre,PLAYER,C2,Niraj Mhatre
-51,Nitin Shisatkar,PLAYER,C2,Nitin Shisatkar
-52,Paresh Gharat,PLAYER,C2,Paresh Gharat
-53,Pramod Thakur,PLAYER,C2,Pramod Thakur
-54,Pratham Majnekar,PLAYER,C2,Pratham Majnekar
-55,Rahul Shedge,PLAYER,C2,Rahul Shedge
-56,Rajendra Mali,PLAYER,C2,Rajendra Mali
-57,Vinayak Shisatkar,Bowler,A,Vinayak Shisatkar
-58,Tushar Tambadkar,Bowler,A,Tushar Tambadkar
-59,Soham Patil,Bowler,A,Soham Patil
-60,Shubham Joshi,Bowler,A,Shubham Joshi
-61,Shravan Bagade,Bowler,A,Shravan Bagade
-62,Sharad Khot,Bowler,A,Sharad Khot
-63,Sameer Mhatre,Bowler,A,Sameer Mhatre
-64,Prashant Dake,Bowler,A,Prashant Dake
-65,Prasad Gharat,Bowler,A,Prasad Gharat
-66,Pramod Patil,Bowler,A,Pramod Patil
-67,Pavan Thakur,Bowler,A,Pavan Thakur
-68,Nilesh More,Bowler,A,Nilesh More
-69,Mayur Khot,Bowler,A,Mayur Khot
-70,Akshay Kadam,Bowler,A,Akshay Kadam
-71,Chinmay Thakur,Batsmen,B,Chinmay Thakur
-72,Dipesh Kambli,Batsmen,B,Dipesh Kambli
-73,Karan Mokal,Batsmen,B,Karan Mokal
-74,Manish Bapardekar,Batsmen,B,Manish Bapardekar
-75,Pranav Thakur,Batsmen,B,Pranav Thakur
-76,Pratham Payar,Batsmen,B,Pratham Payar
-77,Rohit More,Batsmen,B,Rohit More
-78,Rushikesh Thakur,Batsmen,B,Rushikesh Thakur
-79,Siddhesh Gawade,Batsmen,B,Siddhesh Gawade
-80,Sujal Patil,Batsmen,B,Sujal Patil
-81,Uday Mali,Batsmen,B,Uday Mali
-82,Vikas Thakur,Batsmen,B,Vikas Thakur
-83,Vikrant Mali,Batsmen,B,Vikrant Mali
-84,Vishal Vajantri,Batsmen,B,Vishal Vajantri
-85,Ajay Majnekar,Bowler,B,Ajay Majnekar
-86,Ajinkya Khot,Bowler,B,Ajinkya Khot
-87,Amol Gharat,Bowler,B,Amol Gharat
-88,Bhushan Shedge,Bowler,B,Bhushan Shedge
-89,Girish Gaikar,Bowler,B,Girish Gaikar
-90,Hemant Vajantri,Bowler,B,Hemant Vajantri
-91,Jayvant Satamkar,Bowler,B,Jayvant Satamkar
-92,Prashant Phulare,Bowler,B,Prashant Phulare
-93,Ritik Mali,Bowler,B,Ritik Mali
-94,Sagar Thakur,Bowler,B,Sagar Thakur
-95,Sanjay Bhoir,Bowler,B,Sanjay Bhoir
-96,Shlok Thakur,Bowler,B,Shlok Thakur
-97,Sumit Telge,Bowler,B,Sumit Telge
-98,Suresh Khot,Bowler,B,Suresh Khot
-99,Rajendra Manjanekar,PLAYER,C3,Rajendra Manjanekar
-100,Rohit Majnekar,PLAYER,C3,Rohit Majnekar
-101,Rudra Shedge,PLAYER,C3,Rudra Shedge
-102,Sachin Fulare,PLAYER,C3,Sachin Fulare
-103,Sachin Thakur,PLAYER,C3,Sachin Thakur
-104,Sagar Rana,PLAYER,C3,Sagar Rana
-105,Sahil Kotwal,PLAYER,C3,Sahil Kotwal
-106,Saish More,PLAYER,C3,Saish More
-107,Samarth Majanekar,PLAYER,C3,Samarth Majanekar
-108,Sandeep Bhoir ,PLAYER,C3,Sandeep Bhoir 
-109,Sandeep Patil,PLAYER,C3,Sandeep Patil
-110,Shok Manjanekar,PLAYER,C3,Shok Manjanekar
-111,Shree Joshi,PLAYER,C3,Shree Joshi
-112,Siddhesh Mhatre,PLAYER,C3,Siddhesh Mhatre
-113,Sumit Gawde,PLAYER,C4,Sumit Gawde
-114,Sunil Shisatkar,PLAYER,C4,Sunil Shisatkar
-115,Tejas Mhatre,PLAYER,C4,Tejas Mhatre
-116,Umesh Patil,PLAYER,C4,Umesh Patil
-117,Varad Borekar,PLAYER,C4,Varad Borekar
-118,Vedant Ganekar,PLAYER,C4,Vedant Ganekar
-119,Vilas Patil,PLAYER,C4,Vilas Patil
-120,Vinay Patil,PLAYER,C4,Vinay Patil
-121,Vinayak Joshi,PLAYER,C4,Vinayak Joshi
-122,Yash Patil,PLAYER,C4,Yash Patil
-123,Yash Shinde,PLAYER,C4,Yash Shinde
+Sr No.,Name,Player Style,Category,Common Code,Order to Display
+1,Vaibhav Mhatre,All rounder,A,Vaibhav Mhatre,1
+2,Parag Mhatre,All rounder,A,Parag Mhatre,1
+3,Kunal Mandlekar,All rounder,A,Kunal Mandlekar,1
+4,Siddhesh Mali,All rounder,A,Siddhesh Mali,1
+5,Alpesh Mhatre,All rounder,A,Alpesh Mhatre,1
+6,Viraj More,All rounder,A,Viraj More,1
+7,Yash Mandlekar,All rounder,A,Yash Mandlekar,1
+8,Vinit Patil,All rounder,A,Vinit Patil,1
+9,Sidhesh Mohite,Batsmen,A,Sidhesh Mohite,2
+10,Dipesh Kamble,Batsmen,A,Dipesh Kamble,2
+11,Tejas Gaikar,Batsmen,A,Tejas Gaikar,2
+12,Swapnil Fulare,Batsmen,A,Swapnil Fulare,2
+13,Manthan Patil,Batsmen,A,Manthan Patil,2
+14,Nishikant Mali,Batsmen,A,Nishikant Mali,2
+15,Prayas Mhatre,Batsmen,A,Prayas Mhatre,2
+16,Sachin Mali,Batsmen,A,Sachin Mali,2
+17,Nilesh More,Bowler,A,Nilesh More,3
+18,Sharad Khot,Bowler,A,Sharad Khot,3
+19,Akshay Kadam,Bowler,A,Akshay Kadam,3
+20,Kiran Fhulare,Bowler,A,Kiran Fhulare,3
+21,Tushar Waghmare,Bowler,A,Tushar Waghmare,3
+22,Prasad Gharat,Bowler,A,Prasad Gharat,3
+23,Yatin Thakur,Bowler,A,Yatin Thakur,3
+24,Sameer Mhatre,Bowler,A,Sameer Mhatre,3
+25,Dipesh Kambli,All rounder,B,Dipesh Kambli,4
+26,Tushar Tambadkar,All rounder,B,Tushar Tambadkar,4
+27,Sandeep Bhoir,All rounder,B,Sandeep Bhoir,4
+28,Durvesh Joshi,All rounder,B,Durvesh Joshi,4
+29,Shlok Manjnekar,All rounder,B,Shlok Manjnekar,4
+30,Vinayak Shisatkar,All rounder,B,Vinayak Shisatkar,4
+31,Shubham Joshi,All rounder,B,Shubham Joshi,4
+32,Tejan Shedge,All rounder,B,Tejan Shedge,4
+33,Bhavesh Mandlekar,Batsmen,B,Bhavesh Mandlekar,5
+34,Manish Bapardekar,Batsmen,B,Manish Bapardekar,5
+35,Darshan Patil,Batsmen,B,Darshan Patil,5
+36,Sanket Mali,Batsmen,B,Sanket Mali,5
+37,Rohit More,Batsmen,B,Rohit More,5
+38,Pratham Payar,Batsmen,B,Pratham Payar,5
+39,Sagar Pardhi,Batsmen,B,Sagar Pardhi,5
+40,Suyog Shedge,Batsmen,B,Suyog Shedge,5
+41,Sagar Thakur,Bowler,B,Sagar Thakur,6
+42,Shlok Thakur,Bowler,B,Shlok Thakur,6
+43,Hemant Vajantri,Bowler,B,Hemant Vajantri,6
+44,Sagar Rana,Bowler,B,Sagar Rana,6
+45,Jayesh Majnekar,Bowler,B,Jayesh Majnekar,6
+46,Shravan Bagade,Bowler,B,Shravan Bagade,6
+47,Nishant Thakur,Bowler,B,Nishant Thakur,6
+48,Pramod Patil,Bowler,B,Pramod Patil,6
+49,Vikas Thakur,Batsmen,C1,Vikas Thakur,7
+50,Chinmay Thakur,Batsmen,C1,Chinmay Thakur,7
+51,Yash Shinde,Batsmen,C1,Yash Shinde,7
+52,Pratham Manjnekar,Batsmen,C1,Pratham Manjnekar,7
+53,Yash Patil,Batsmen,C1,Yash Patil,7
+54,Vishal Vajantri,Batsmen,C1,Vishal Vajantri,7
+55,Sachin Fulare,Batsmen,C1,Sachin Fulare,7
+56,Vinay Patil,Batsmen,C1,Vinay Patil,7
+57,Hemant Juikar,Batsmen,C1,Hemant Juikar,7
+58,Sahil Kotwal,Batsmen,C1,Sahil Kotwal,7
+59,Sujal Patil,Batsmen,C1,Sujal Patil,7
+60,Uday Mali,Batsmen,C1,Uday Mali,7
+61,Aaradhya Gharat,Batsmen,C1,Aaradhya Gharat,7
+62,Akshay Khot,Batsmen,C1,Akshay Khot,7
+63,Akshay Patil,Batsmen,C1,Akshay Patil,7
+64,Bhagesh Burkar,Batsmen,C1,Bhagesh Burkar,7
+65,Rahul Shedge,Bowler,C2,Rahul Shedge,8
+66,Girish Gaikar,Bowler,C2,Girish Gaikar,8
+67,Niraj Mhatre,Bowler,C2,Niraj Mhatre,8
+68,Prashant Fhulare,Bowler,C2,Prashant Fhulare,8
+69,Arun Mhatre,Bowler,C2,Arun Mhatre,8
+70,Siddhesh Mhatre,Bowler,C2,Siddhesh Mhatre,8
+71,Sunil Shishatkar,Bowler,C2,Sunil Shishatkar,8
+72,Yogesh Thakur,Bowler,C2,Yogesh Thakur,8
+73,Dnyaneshwar Ghanekar,Batsmen,C2,Dnyaneshwar Ghanekar,8
+74,Gaurav More,Batsmen,C2,Gaurav More,8
+75,Kishor Thakur,Batsmen,C2,Kishor Thakur,8
+76,Krish Bagade,Batsmen,C2,Krish Bagade,8
+77,Nitin Shisatkar,Batsmen,C2,Nitin Shisatkar,8
+78,Paresh Gharat,Batsmen,C2,Paresh Gharat,8
+79,Sushil Patil,Batsmen,C2,Sushil Patil,8
+80,Tejas Mhatre,Batsmen,C2,Tejas Mhatre,8
+81,Rajesh More,Batsmen,C3,Rajesh More,9
+82,Jagdish Tambadkar,All rounder,C3,Jagdish Tambadkar,9
+83,Ajay Majnekar,All rounder,C3,Ajay Majnekar,9
+84,Rajendra Manjanekar,All rounder,C3,Rajendra Manjanekar,9
+85,Ketan Nakte,All rounder,C3,Ketan Nakte,9
+86,Pranav Thakur,All rounder,C3,Pranav Thakur,9
+87,Kishor Manjanekar,All rounder,C3,Kishor Manjanekar,9
+88,Manohar Thakur,All rounder,C3,Manohar Thakur,9
+89,Ratnesh Wavekar,Batsmen,C3,Ratnesh Wavekar,9
+90,Harshad Patil,Batsmen,C3,Harshad Patil,9
+91,Sumit Gawde,Batsmen,C3,Sumit Gawde,9
+92,Umesh Patil,Batsmen,C3,Umesh Patil,9
+93,Vinayak Mhatre,Batsmen,C3,Vinayak Mhatre,9
+94,Avinash Dhadve,Batsmen,C3,Avinash Dhadve,9
+95,Saish More,Batsmen,C3,Saish More,9
+96,Rohit Majnekar,Batsmen,C3,Rohit Majnekar,9

@@ -2,7 +2,6 @@ import React, {useRef, useEffect} from "react";
 import "./PriceCard.css";
 import Lottie from "lottie-react";
 import animationData from "./Scroll Down Arrow.json";
-import soldAnimationData from "./sold at auction.json";
 
 
 const formatter = new Intl.NumberFormat('en-IN', {
@@ -17,6 +16,7 @@ const PriceCard = ({ price, isSold }) => {
  
    useEffect(() => {
      // lottieRef.current.setSpeed(0.5); // slower
+     if (isSold) return
      lottieRef.current.setSpeed(2); // faster
      lottieRef2.current.setSpeed(2); // faster
    }, []);
@@ -28,7 +28,7 @@ const PriceCard = ({ price, isSold }) => {
       </span>
 
       <span className="price-value">
-        {!isSold?(
+        {!isSold && (
           <div>
           <div style={{ width: 250, height: 250, position: 'absolute', top: -10,left:0, rotate: '270deg' }}>
             <Lottie
@@ -46,13 +46,6 @@ const PriceCard = ({ price, isSold }) => {
             />
           </div>
           </div>
-        ):(
-          <div style={{ width: 300, height: 300, position: 'absolute', top: -70,right:0 }}>
-          <Lottie
-            animationData={soldAnimationData}
-            loop={true}
-          />
-        </div>
         )
         }
         {formatter.format(price)}
@@ -62,3 +55,5 @@ const PriceCard = ({ price, isSold }) => {
 };
 
 export default PriceCard;
+
+// npm install -g kill-port kill-port 5001                   

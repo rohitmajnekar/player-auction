@@ -16,8 +16,8 @@ app.use(cors({
       'http://localhost:5173',
       'http://127.0.0.1:3000',
       'http://127.0.0.1:5173',
-      'http://192.168.0.112:3000',
-      'http://192.168.0.112:5173'
+      'http://192.168.0.103:3000',
+      'http://192.168.0.103:5173'
     ];
 
     // Allow requests with no origin (like mobile apps or curl requests)
@@ -43,8 +43,8 @@ const io = new Server(server, {
         'http://localhost:5173',
         'http://127.0.0.1:3000',
         'http://127.0.0.1:5173',
-        'http://192.168.0.112:3000',
-        'http://192.168.0.112:5173'
+        'http://192.168.0.103:3000',
+        'http://192.168.0.103:5173'
       ];
 
       // Allow requests with no origin (like mobile apps or curl requests)
@@ -100,20 +100,79 @@ const getAsync = (sql, params = []) => {
 };
 
 const defaultTeamsData = [
-  { name: 'AGRI TITANS', logo: '1.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI CHALLENGERS', logo: '2.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI CHARGERS', logo: '3.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI WARRIORS', logo: '4.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI SPARTANS', logo: '5.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI STARTS', logo: '6.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI STRIKERS', logo: '7.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI ROYALS', logo: '8.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI THUNDER', logo: '9.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI BLASTERS', logo: '10.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI DEVILS', logo: '11.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI KINGS', logo: '12.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-  { name: 'AGRI FIGHTERS', logo: '13.jpg', ownerImage: '33.jpg', totalPoints: 10000000, pointsUsed: 0, balancePoints: 10000000 },
-];
+    {
+      name: "AGRI TITANS",
+      owner: "Manish Thakur",
+      ownerImage: "owners/Manish Thakur.jpg",
+      logo: "1.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI WARRIORS",
+      owner: "Vicky Mhatre",
+      ownerImage: "owners/Vicky Mhatre.jpg",
+      logo: "2.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI SPARTANS",
+      owner: "Manish Avkirkar",
+      ownerImage: "owners/Manish Avkirkar.jpg",
+      logo: "3.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 300000,
+      balancePoints: 9700000,
+    },
+    {
+      name: "AGRI KINGS",
+      owner: "Pranay Patil",
+      ownerImage: "owners/Pranay Patil.jpg",
+      logo: "4.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI RIDERS",
+      owner: "Mehandra Wavekar",
+      ownerImage: "owners/Mehandra Wavekar.jpg",
+      logo: "5.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI STARTS",
+      owner: "Prajot Dhumal",
+      ownerImage: "owners/Prajot Dhumal.jpg",
+      logo: "6.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI ROYALS",
+      owner: "Ritanshu Thakur",
+      ownerImage: "owners/Ritanshu Thakur.jpg",
+      logo: "7.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    },
+    {
+      name: "AGRI THUNDER",
+      owner: "Mukesh Mali",
+      ownerImage: "owners/Mukesh Mali.jpg",
+      logo: "8.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+    }
+  ];
 const initDb = async () => {
   await runAsync(`CREATE TABLE IF NOT EXISTS players (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -136,6 +195,7 @@ const initDb = async () => {
     name TEXT UNIQUE,
     logo TEXT,
     ownerImage TEXT,
+    owner TEXT,
     totalPoints INTEGER,
     pointsUsed INTEGER,
     balancePoints INTEGER
@@ -178,6 +238,7 @@ const rowToTeam = (row) => ({
   name: row.name,
   logo: row.logo,
   ownerImage: row.ownerImage,
+  owner: row.owner,
   totalPoints: row.totalPoints,
   pointsUsed: row.pointsUsed,
   balancePoints: row.balancePoints,
@@ -238,9 +299,9 @@ const savePlayers = async (players) => {
 const saveTeams = async (teams) => {
   for (const team of teams) {
     await runAsync(
-      `INSERT INTO teams (name, logo, ownerImage, totalPoints, pointsUsed, balancePoints)
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [team.name, team.logo, team.ownerImage, team.totalPoints, team.pointsUsed, team.balancePoints]
+      `INSERT INTO teams (name, logo, ownerImage, owner, totalPoints, pointsUsed, balancePoints)
+       VALUES (?, ?, ?, ?, ?, ?, ?)`,
+      [team.name, team.logo, team.ownerImage,team.owner, team.totalPoints, team.pointsUsed, team.balancePoints]
     );
   }
 };

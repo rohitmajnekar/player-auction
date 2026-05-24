@@ -1,3 +1,3 @@
 // src/lib/stores/socket.ts
 import { io } from "socket.io-client";
-export const socket = io("http://192.168.0.112:5000");
+export const socket = io("http://192.168.0.103:5005");

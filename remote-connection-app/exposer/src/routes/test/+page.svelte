@@ -1,17 +1,22 @@
 <script>
     import io from 'socket.io-client';
 
- const teams = [{
-        name: "AGRI TITANS",
-        logo: "1.jpg",
-        totalPoints: 10000000,
-        pointsUsed: 0,
-        balancePoints: 10000000,
-        players: [],
-        key: 1
-      },
+ const teams =[
     {
-      name: "AGRI CHALLENGERS",
+      name: "AGRI TITANS",
+      owner: "Manish Thakur",
+      ownerImage: "owners/Manish Thakur.jpg",
+      logo: "1.jpg",
+      totalPoints: 10000000,
+      pointsUsed: 0,
+      balancePoints: 10000000,
+      players: [],
+      key: 1
+    },
+    {
+      name: "AGRI WARRIORS",
+      owner: "Vicky Mhatre",
+      ownerImage: "owners/Vicky Mhatre.jpg",
       logo: "2.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
@@ -20,16 +25,20 @@
       key: 2
     },
     {
-      name: "AGRI CHARGERS",
+      name: "AGRI SPARTANS",
+      owner: "Manish Avkirkar",
+      ownerImage: "owners/Manish Avkirkar.jpg",
       logo: "3.jpg",
       totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
+      pointsUsed: 300000,
+      balancePoints: 9700000,
       players: [],
       key: 3
     },
     {
-      name: "AGRI WARRIORS",
+      name: "AGRI KINGS",
+      owner: "Pranay Patil",
+      ownerImage: "owners/Pranay Patil.jpg",
       logo: "4.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
@@ -38,7 +47,9 @@
       key: 4
     },
     {
-      name: "AGRI SPARTANS",
+      name: "AGRI RIDERS",
+      owner: "Mehandra Wavekar",
+      ownerImage: "owners/Mehandra Wavekar.jpg",
       logo: "5.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
@@ -48,6 +59,8 @@
     },
     {
       name: "AGRI STARTS",
+      owner: "Prajot Dhumal",
+      ownerImage: "owners/Prajot Dhumal.jpg",
       logo: "6.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
@@ -56,7 +69,9 @@
       key: 6
     },
     {
-      name: "AGRI STRIKERS",
+      name: "AGRI ROYALS",
+      owner: "Ritanshu Thakur",
+      ownerImage: "owners/Ritanshu Thakur.jpg",
       logo: "7.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
@@ -65,71 +80,18 @@
       key: 7
     },
     {
-      name: "AGRI ROYALS",
+      name: "AGRI THUNDER",
+      owner: "Mukesh Mali",
+      ownerImage: "owners/Mukesh Mali.jpg",
       logo: "8.jpg",
       totalPoints: 10000000,
       pointsUsed: 0,
       balancePoints: 10000000,
       players: [],
       key: 8
-    },
-    {
-      name: "AGRI THUNDER",
-      logo: "9.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 9
-    },
-    {
-      name: "AGRI BLASTERS",
-      logo: "10.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 10
-    },
-    {
-      name: "AGRI DEVILS",
-      logo: "11.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 11
-    },
-    {
-      name: "AGRI KINGS",
-      logo: "12.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 12
-    },
-    {
-      name: "AGRI FIGHTERS",
-      logo: "13.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 13
-    },
-    {
-      name: "AGRI RIDERS",
-      logo: "14.jpg",
-      totalPoints: 10000000,
-      pointsUsed: 0,
-      balancePoints: 10000000,
-      players: [],
-      key: 14
-    },
-    // Add more teams as needed
+    }
   ];
-    const socket = io("http://192.168.0.112:5000");
+    const socket = io("http://192.168.0.103:5005");
 
   let selectedTeams = [];
 

@@ -6,6 +6,8 @@ import { useImperativeHandle } from 'react';
 import {io} from 'socket.io-client'
 import { sellPlayer } from './helper';
 import PriceCard from './PriceCard';
+import soldAnimationData from "./sold at auction.json";
+import Lottie from "lottie-react";
 
 
 const DetailCard = ({ icon, label, value }) => (
@@ -89,7 +91,7 @@ const PlayerCard = forwardRef((props, ref) => {
           return oldTeam;
         });
       });
-    }, 3000);
+    }, 5000);
   };
 
   // function get_current_index(){
@@ -105,7 +107,7 @@ const PlayerCard = forwardRef((props, ref) => {
   useEffect(() => console.log('mounted'), [player]);
   
     useEffect(() => {
-      const newSocket = io("http://localhost:5000");
+      const newSocket = io("http://localhost:5005");
       setSocket(newSocket);
   
       newSocket.on('connect', () => {
@@ -158,9 +160,24 @@ const PlayerCard = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     handleTeamSelect,
   }));
-
+  useEffect(()=>{
+    if (!player.sold) return
+    {document.querySelector("video").playbackRate = 2}
+  }, [player.sold])
+  
   return (
     <div key={player.Name} className={`player-card ${player.sold? 'soldPlayer': ''}`}>
+      {player.sold && (
+        <div id="animation-overlay">
+            <div class="video-overlay" id="overlay">
+          <div class="close-btn" onclick="closeOverlay()">×</div>
+
+          <video autoPlay muted loop playsInline >
+            <source src={`/logo_animations/${player.team_name}.webm`} type="video/mp4"/>
+          </video>
+        </div>
+        </div>
+      )}
        {player.sold && <Confetti gravity={1} />}
        <div className='card-title'>
          APL 2024 Auctions
@@ -175,7 +192,16 @@ const PlayerCard = forwardRef((props, ref) => {
               <p>Base Price: {player.Price}</p>
               <h1 className='bidding-price'> Price: {sale_price/100000}L</h1> */}
               <div className="player-details panel left-panel">
-                <h1>{player.Name}</h1>
+                <div className='player-name2'>
+                  {player.Name?(
+                    <>
+                      <h1>{player.Name.split(" ")[0]}</h1>
+                      <h1 className='surname'>{player.Name.split(" ")[1]}</h1>
+                    </>
+                  ):(
+                    <h1>{player.Mame}</h1>
+                  )}
+                </div>
 
                 <DetailCard
                   icon = {`./playerStyle.png`}
@@ -199,6 +225,12 @@ const PlayerCard = forwardRef((props, ref) => {
                 <div className="image-glow" />
 
                 <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
+                {player.sold && (
+                  <div className="team-overlay2">
+                    <img src={`./logos/${player.team_logo}`} alt="Kolkata Crusaders Logo" className="team-logo2" />
+                    <span className="team-name2">{player.team_name}</span>
+                  </div>
+                )}
               </div>
               {/* Add more relevant information */}
             </div>
@@ -208,38 +240,20 @@ const PlayerCard = forwardRef((props, ref) => {
         {/* <div className="player-photo">
           <img src={`./photos/${player.Photo}.jpg`} alt={player.Name} />
         </div> */}
-        {player.sold?(
-          <div>
-            <div className='sold-image'></div>
-            <div className='sold-information'>
-              <h1 style={{padding: '25px'}}> 
-                Sold To
-              </h1>
-              <div style={{fontWeight: 'bold', fontSize: 'x-large'}}>
-                <img style={{alignSelf: 'end'}} src={`./logos/${player.team_logo}`} alt="Team Logo" className="team-logo card-logo" />
-                <p>
-                  {player.team_name}
-                </p>
-              </div>
-                {/* <img src={player.team.src}></img> */}
-            </div>
+        <div>
+          <div className="sale-button button-8" style={{backgroundColor: isEnterPressed? "green":""}} onClick={() => setShowTeams(!showTeams)}>
+            Sale
           </div>
-        ):(
-          <div>
-            <div className="sale-button button-8" style={{backgroundColor: isEnterPressed? "green":""}} onClick={() => setShowTeams(!showTeams)}>
-              Sale
-            </div>
-            <div className={`team-overlay ${showTeams ? 'show' : ''}`}>
-              <ul className="team-list">
-                {teams.map((team, index) => (
-                  <li key={index} onClick={() => handleTeamSelect(team)}>
-                    {team.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className={`team-overlay ${showTeams ? 'show' : ''}`}>
+            <ul className="team-list">
+              {teams.map((team, index) => (
+                <li key={index} onClick={() => handleTeamSelect(team)}>
+                  {team.name}
+                </li>
+              ))}
+            </ul>
           </div>
-        )}
+        </div>
     </div>
   );
 });

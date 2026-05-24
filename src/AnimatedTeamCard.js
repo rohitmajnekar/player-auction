@@ -20,7 +20,8 @@ const AnimatedTeamCard = ({ team, index, row, col, cols, rows }) => {
         
         <div className="animated-team-info">
           <h2 className="animated-team-name">{team.name}</h2>
-          <img src={`./logos/${team.ownerImage}`} alt="Owner" className="animated-owner-image" />
+          <img src={`/${team.ownerImage}`} alt="Owner" className="animated-owner-image" />
+          {console.log(team)}
           <p className="animated-owner-name">{team.owner}</p>
           <p className="animated-total-points">Total Points: {team.totalPoints}</p>
         </div>

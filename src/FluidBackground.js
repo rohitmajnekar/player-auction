@@ -851,7 +851,35 @@ export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered })
             }
         `
         );
+        function clearBloomAndFluid() {
+            gl.disable(gl.BLEND);
 
+            // Clear density
+            gl.bindFramebuffer(gl.FRAMEBUFFER, density.read.fbo);
+            gl.clearColor(0, 0, 0, 0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            gl.bindFramebuffer(gl.FRAMEBUFFER, density.write.fbo);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            // Clear velocity
+            gl.bindFramebuffer(gl.FRAMEBUFFER, velocity.read.fbo);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            gl.bindFramebuffer(gl.FRAMEBUFFER, velocity.write.fbo);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            // Clear bloom
+            gl.bindFramebuffer(gl.FRAMEBUFFER, bloom.fbo);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+
+            bloomFramebuffers.forEach((fbo) => {
+                gl.bindFramebuffer(gl.FRAMEBUFFER, fbo.fbo);
+                gl.clear(gl.COLOR_BUFFER_BIT);
+            });
+
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+        }
         function shootStream(startX, startY, dirX, dirY, color) {
 
             let i = 0;
@@ -880,6 +908,9 @@ export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered })
                 
                 if (i > 200) {
                     clearInterval(interval);
+                    setTimeout(() => {
+                        clearBloomAndFluid();
+                    }, 300);
                 }
 
             }, 32);
@@ -1757,9 +1788,10 @@ export default function FluidBackground({ maxBidTriggered, setMaxBidTriggered })
         color.r *= 10.0;
         color.g *= 10.0;
         color.b *= 10.0;
-        shootStream(200, 900, 0, -1, color);
-        shootStream(700, 900, 0, -1, color);
-        shootStream(1200, 900, 0, -1, color);
+        shootStream(200, 1000, 0, -1, color);
+        shootStream(1000, 1000, 0, -1, color);
+        shootStream(1800, 1000, 0, -1, color);
+        shootStream(2400, 1000, 0, -1, color);
         setMaxBidTriggered(!maxBidTriggered);
     }, [maxBidTriggered]);
 

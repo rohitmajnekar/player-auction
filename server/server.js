@@ -13,8 +13,8 @@ const io = new Server(server, {
         'http://localhost:5173',
         'http://127.0.0.1:3000',
         'http://127.0.0.1:5173',
-        'http://192.168.0.112:3000',
-        'http://192.168.0.112:5173'
+        'http://192.168.0.103:3000',
+        'http://192.168.0.103:5173'
       ];
 
       // Allow requests with no origin (like mobile apps or curl requests)
@@ -58,7 +58,7 @@ io.on('connection', (socket) => {
   });
 });
 
-const PORT = 5000;
+const PORT = 5005;
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Socket.IO server running on port ${PORT}`);
 });

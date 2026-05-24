@@ -80,6 +80,7 @@
   box-shadow: 0 0 14px rgba(37, 199, 255, 0.2);
   margin: 10px 0;
   opacity: 0;
+  object-fit: contain;
   transform: translateY(20px);
   animation: rotateOwnerImage 3s ease-out forwards;
   animation-delay: calc(var(--card-delay, 0s) + 1s);
@@ -167,11 +168,11 @@
 @keyframes showLogo {
   0% {
     opacity: 0;
-    transform: translateX(550px) translateY(-130px) scale(1.5);
+    transform: translateX(600px) translateY(-250px) scale(1.5);
   }
   95% {
     opacity: 1;
-    transform: translateX(550px) translateY(-130px) scale(1.5);
+    transform: translateX(600px) translateY(-250px) scale(1.5);
   }
   100% {
     opacity: 1;
@@ -182,15 +183,15 @@
 @keyframes rotateOwnerImage {
   0% {
     opacity: 0;
-    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(5);
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(7);
   }
   30% {
     opacity: 1;
-    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 90deg) scale(5);
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 90deg) scale(7);
   } 
   95% {
     opacity: 1;
-    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(5);
+    transform: translateX(-500px) translateY(-100px) rotate3d(0, 1, 0, 0deg) scale(7);
   }  
   100% {
     opacity: 1;
@@ -216,11 +217,11 @@
 @keyframes fadeInText {
   0% {
     opacity: 0;
-    transform: translateY(-280px) scale(2);
+    transform: translateY(-280px) scale(4);
   }
   95% {
     opacity: 1;
-    transform: translateY(-280px) scale(2);
+    transform: translateY(-280px) scale(4);
   }
   100% {
     opacity: 1;
